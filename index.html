@@ -36,7 +36,7 @@
     transition: all 0.3s;
   }
   nav.scrolled { padding: 12px 60px; }
-  .nav-logo img { height: 52px; }
+  .nav-logo img { height: 52px; display: block; mix-blend-mode: screen; }
   .nav-links { display: flex; gap: 36px; list-style: none; }
   .nav-links a {
     color: var(--muted); text-decoration: none;
@@ -45,12 +45,12 @@
   }
   .nav-links a:hover { color: var(--accent); }
   .nav-cta {
-    background: var(--accent); color: var(--bg);
-    padding: 10px 24px; font-size: 12px; font-weight: 700;
-    letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
-    transition: background 0.2s;
+    color: var(--accent); text-decoration: none;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    transition: color 0.2s;
   }
-  .nav-cta:hover { background: var(--accent-dark); }
+  .nav-cta:hover { color: var(--accent-dark); }
 
   /* HERO */
   .hero {
@@ -269,7 +269,7 @@
     display: flex; align-items: center; justify-content: space-between;
     border-top: 1px solid rgba(214,201,169,0.08);
   }
-  .footer-logo img { height: 44px; }
+  .footer-logo img { height: 44px; mix-blend-mode: lighten; }
   .footer-copy { font-size: 12px; color: var(--muted); }
   .footer-tagline {
     font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Barlow Condensed', sans-serif;
@@ -374,16 +374,7 @@
     <a href="#propriedades" class="btn-primary">Ver Portfólio</a>
     <a href="#contato" class="btn-outline">Falar com a SOHO</a>
   </div>
-  <div class="hero-stats">
-    <div>
-      <div class="hero-stat-num">USD 500Bi</div>
-      <div class="hero-stat-label">Mercado global de esportes</div>
-    </div>
-    <div>
-      <div class="hero-stat-num">6%</div>
-      <div class="hero-stat-label">Crescimento anual do setor</div>
-    </div>
-  </div>
+
 </section>
 
 <!-- MARQUEE -->
