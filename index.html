@@ -140,6 +140,16 @@
     text-transform: uppercase; color: var(--accent);
     margin-bottom: 16px; display: block;
   }
+  /* FADE IN */
+.fadeIn {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fadeIn.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
   .section-title {
     font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Barlow Condensed', sans-serif;
     font-size: clamp(42px, 5vw, 68px);
