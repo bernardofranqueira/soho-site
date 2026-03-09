@@ -669,6 +669,24 @@
   <div class="footer-copy">© 2025 SOHO Sports & Brands · www.sohosportsbrands.com.br</div>
 </footer>
 
+<!-- EM CONSTRUÇÃO OVERLAY -->
+<div id="construction-overlay" style="
+  position: fixed; inset: 0; z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  background: rgba(30, 12, 30, 0.6);
+">
+  <p style="
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-style: italic;
+    font-size: clamp(24px, 4vw, 56px);
+    text-transform: uppercase;
+    color: #d6c9a9;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+  ">HTML EM CONSTRUÇÃO</p>
+</div>
+
 <script>
   window.addEventListener('scroll', () => {
     document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
