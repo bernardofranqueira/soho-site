@@ -506,7 +506,7 @@
       font-size: 17px;
       line-height: 1.6;
       color: var(--accent);
-      max-width: 620px;
+      max-width: none;
       margin: 0 0 36px;
     }
     .hosp-title {
@@ -521,6 +521,7 @@
       margin-bottom: 16px;
     }
     .hosp-date { color: var(--white); font-weight: 400; }
+    .hosp-photo { display: none; }
     #hospitalidade .featured-content { max-width: 620px; }
     .hosp-foot {
       display: flex;
@@ -1109,21 +1110,25 @@
     .featured-pills,
     .featured-card.align-right .featured-pills { justify-content: flex-start; }
     .featured-pill { font-size: 11px; padding: 5px 12px; }
-    /* hospitalidade no celular: foto em cima, texto embaixo no fundo liso */
-    .hosp-card {
+    /* hospitalidade no celular: foto solta em cima (sem degradê), texto alinhado embaixo */
+    #hospitalidade .featured-stack { gap: 44px; }
+    #hospitalidade .featured-card.hosp-card {
       height: auto;
-      background-size: auto 220px;
-      background-repeat: no-repeat;
-      background-position: right top;
+      aspect-ratio: auto;
+      overflow: visible;
+      background: none !important;
     }
-    .hosp-card.align-right { background-position: left top; }
-    #hospitalidade .featured-card.hosp-card { height: auto; }
     .hosp-card::before,
-    .hosp-card.align-right::before {
-      background: linear-gradient(to bottom, transparent 0, transparent 110px, var(--bg) 214px, var(--bg) 100%);
+    .hosp-card.align-right::before { display: none; }
+    .hosp-photo {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
     }
     .hosp-card .featured-content,
-    .hosp-card.align-right .featured-content { padding-top: 232px; padding-bottom: 8px; }
+    .hosp-card.align-right .featured-content { padding: 20px 0 0; }
     .hosp-intro { font-size: 15px; margin-bottom: 24px; }
     .hosp-foot { flex-direction: column; align-items: flex-start; }
 
@@ -1599,6 +1604,7 @@
 
       <div class="featured-stack fade-in">
         <div class="featured-card hosp-card" style="background-image:url('assets/img/hosp-f1.webp');">
+          <img class="hosp-photo" src="assets/img/hosp-f1-m.webp" width="800" height="450" alt="Fórmula 1 em Interlagos" loading="lazy" decoding="async" />
           <div class="featured-content">
             <div class="featured-cat" data-i18n="hosp_f1_cat">AUTOMOBILISMO • INTERLAGOS</div>
             <h3 class="hosp-title" data-i18n="hosp_f1_title">FÓRMULA 1<br>GP DE SÃO PAULO</h3>
@@ -1607,6 +1613,7 @@
           </div>
         </div>
         <div class="featured-card hosp-card align-right" style="background-image:url('assets/img/hosp-champions.webp');">
+          <img class="hosp-photo" src="assets/img/hosp-champions-m.webp" width="800" height="450" alt="Final da Liga dos Campeões" loading="lazy" decoding="async" />
           <div class="featured-content">
             <div class="featured-cat" data-i18n="hosp_ucl_cat">FUTEBOL • EUROPA</div>
             <h3 class="hosp-title" data-i18n="hosp_ucl_title">FINAL DA<br>LIGA DOS CAMPEÕES</h3>
@@ -1615,6 +1622,7 @@
           </div>
         </div>
         <div class="featured-card hosp-card" style="background-image:url('assets/img/hosp-libertadores.webp');">
+          <img class="hosp-photo" src="assets/img/hosp-libertadores-m.webp" width="800" height="450" alt="Final da Libertadores" loading="lazy" decoding="async" />
           <div class="featured-content">
             <div class="featured-cat" data-i18n="hosp_lib_cat">FUTEBOL • AMÉRICA DO SUL</div>
             <h3 class="hosp-title" data-i18n="hosp_lib_title">FINAL DA<br>LIBERTADORES</h3>
@@ -1623,6 +1631,7 @@
           </div>
         </div>
         <div class="featured-card hosp-card align-right" style="background-image:url('assets/img/hosp-atp.webp');">
+          <img class="hosp-photo" src="assets/img/hosp-atp-m.webp" width="800" height="450" alt="Tênis no ATP Tour" loading="lazy" decoding="async" />
           <div class="featured-content">
             <div class="featured-cat" data-i18n="hosp_atp_cat">TÊNIS • CIRCUITO MUNDIAL</div>
             <h3 class="hosp-title" data-i18n="hosp_atp_title">ATP<br>TOUR</h3>
