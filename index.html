@@ -496,6 +496,46 @@
     ══════════════════════════════ */
     #propriedades { background: var(--bg); }
 
+    /* ══ HOSPITALIDADE (reaproveita os featured-cards) ══ */
+    #hospitalidade { background: var(--bg); }
+    #hospitalidade .inner { padding-top: 40px; }
+    #hospitalidade .sec-title { color: var(--white); }
+    .hosp-intro {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--accent);
+      max-width: 620px;
+      margin: 0 0 36px;
+    }
+    .hosp-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-style: italic;
+      font-size: clamp(34px, 3.6vw, 54px);
+      line-height: 0.92;
+      letter-spacing: -0.5px;
+      color: var(--white);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .hosp-date { color: var(--white); font-weight: 400; }
+    #hospitalidade .featured-content { max-width: 620px; }
+    .hosp-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .hosp-note {
+      font-family: 'Barlow', sans-serif;
+      font-size: 13px;
+      color: var(--accent);
+      opacity: 0.7;
+    }
+
     /* ══ CARDS EM DESTAQUE (Ludmilla / UNICEF / CBSquash) ══ */
     .featured-stack {
       display: flex;
@@ -1069,6 +1109,23 @@
     .featured-pills,
     .featured-card.align-right .featured-pills { justify-content: flex-start; }
     .featured-pill { font-size: 11px; padding: 5px 12px; }
+    /* hospitalidade no celular: foto em cima, texto embaixo no fundo liso */
+    .hosp-card {
+      height: auto;
+      background-size: auto 220px;
+      background-repeat: no-repeat;
+      background-position: right top;
+    }
+    .hosp-card.align-right { background-position: left top; }
+    #hospitalidade .featured-card.hosp-card { height: auto; }
+    .hosp-card::before,
+    .hosp-card.align-right::before {
+      background: linear-gradient(to bottom, transparent 0, transparent 110px, var(--bg) 214px, var(--bg) 100%);
+    }
+    .hosp-card .featured-content,
+    .hosp-card.align-right .featured-content { padding-top: 232px; padding-bottom: 8px; }
+    .hosp-intro { font-size: 15px; margin-bottom: 24px; }
+    .hosp-foot { flex-direction: column; align-items: flex-start; }
 
     /* ── FALE CONOSCO ── */
     #fale-conosco .inner {
@@ -1201,6 +1258,7 @@
       <li><a href="#quem-somos" data-i18n="nav_quem">QUEM SOMOS</a></li>
       <li><a href="#servicos" data-i18n="nav_servicos">SERVIÇOS</a></li>
       <li><a href="#propriedades" data-i18n="nav_prop">PROPRIEDADES</a></li>
+      <li><a href="#hospitalidade" data-i18n="nav_hosp">HOSPITALIDADE</a></li>
     </ul>
     <div style="display:flex;align-items:center;gap:12px;">
       <div class="lang-flags">
@@ -1532,6 +1590,55 @@
     </div>
   </section>
 
+  <!-- ══ HOSPITALIDADE ══ -->
+  <section id="hospitalidade">
+    <div class="inner">
+      <p class="eyebrow" data-i18n="hosp_eyebrow">EXPERIÊNCIAS VIP</p>
+      <h2 class="sec-title fade-in" data-i18n="hosp_sec_title">HOSPITALIDADE</h2>
+      <p class="hosp-intro" data-i18n="hosp_intro">Acesso VIP aos maiores eventos do esporte mundial para marcas que querem receber clientes, parceiros e times onde a emoção acontece.</p>
+
+      <div class="featured-stack fade-in">
+        <div class="featured-card hosp-card" style="background-image:url('assets/img/hosp-f1.webp');">
+          <div class="featured-content">
+            <div class="featured-cat" data-i18n="hosp_f1_cat">AUTOMOBILISMO • INTERLAGOS</div>
+            <h3 class="hosp-title" data-i18n="hosp_f1_title">FÓRMULA 1<br>GP DE SÃO PAULO</h3>
+            <p class="featured-desc"><span data-i18n="hosp_f1_desc">Lounge exclusivo no Grande Prêmio de São Paulo, todo ano em novembro no Autódromo de Interlagos.</span></p>
+            <div class="featured-pills"><span class="featured-pill">LOUNGE EXCLUSIVO</span><span class="featured-pill">BUFFET PREMIADO</span><span class="featured-pill">OPEN BAR</span><span class="featured-pill">VISITA AOS BOXES</span><span class="featured-pill">STAFF E APOIO</span></div>
+          </div>
+        </div>
+        <div class="featured-card hosp-card align-right" style="background-image:url('assets/img/hosp-champions.webp');">
+          <div class="featured-content">
+            <div class="featured-cat" data-i18n="hosp_ucl_cat">FUTEBOL • EUROPA</div>
+            <h3 class="hosp-title" data-i18n="hosp_ucl_title">FINAL DA<br>LIGA DOS CAMPEÕES</h3>
+            <p class="featured-desc"><span class="hosp-date" data-ate="2027-06-05" data-i18n="hosp_ucl_date">5 de junho de 2027, em Madri.</span> <span data-i18n="hosp_ucl_desc">Ingressos, hospitalidade e camarote exclusivo na decisão do maior torneio de clubes do mundo.</span></p>
+            <div class="featured-pills"><span class="featured-pill">INGRESSOS*</span><span class="featured-pill">HOSPITALIDADE</span><span class="featured-pill">CAMAROTE EXCLUSIVO**</span><span class="featured-pill">EXPERIÊNCIAS VIP</span><span class="featured-pill">STAFF E APOIO</span></div>
+          </div>
+        </div>
+        <div class="featured-card hosp-card" style="background-image:url('assets/img/hosp-libertadores.webp');">
+          <div class="featured-content">
+            <div class="featured-cat" data-i18n="hosp_lib_cat">FUTEBOL • AMÉRICA DO SUL</div>
+            <h3 class="hosp-title" data-i18n="hosp_lib_title">FINAL DA<br>LIBERTADORES</h3>
+            <p class="featured-desc"><span class="hosp-date" data-ate="2026-11-28" data-i18n="hosp_lib_date">28 de novembro de 2026, em Montevidéu.</span> <span data-i18n="hosp_lib_desc">Ingressos, hospitalidade e camarote exclusivo na grande final do futebol sul-americano.</span></p>
+            <div class="featured-pills"><span class="featured-pill">INGRESSOS*</span><span class="featured-pill">HOSPITALIDADE</span><span class="featured-pill">CAMAROTE EXCLUSIVO**</span><span class="featured-pill">EXPERIÊNCIAS VIP</span><span class="featured-pill">STAFF E APOIO</span></div>
+          </div>
+        </div>
+        <div class="featured-card hosp-card align-right" style="background-image:url('assets/img/hosp-atp.webp');">
+          <div class="featured-content">
+            <div class="featured-cat" data-i18n="hosp_atp_cat">TÊNIS • CIRCUITO MUNDIAL</div>
+            <h3 class="hosp-title" data-i18n="hosp_atp_title">ATP<br>TOUR</h3>
+            <p class="featured-desc"><span data-i18n="hosp_atp_desc">Miami Open, Roland Garros, Wimbledon e US Open, com acesso aos maiores torneios do circuito.</span></p>
+            <div class="featured-pills"><span class="featured-pill">INGRESSOS</span><span class="featured-pill">HOSPITALIDADE</span><span class="featured-pill">EXPERIÊNCIAS VIP</span><span class="featured-pill">BOX EXCLUSIVO**</span><span class="featured-pill">STAFF E APOIO</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hosp-foot">
+        <p class="hosp-note" data-i18n="hosp_note">* Ingressos categorias 1 e 2. ** Sujeito à disponibilidade.</p>
+        <a href="#fale-conosco" class="btn-fill"><span data-i18n="hosp_cta">QUERO LEVAR MEUS CONVIDADOS</span></a>
+      </div>
+    </div>
+  </section>
+
   <!-- ══ FALE CONOSCO ══ -->
   <section id="fale-conosco">
     <div class="inner">
@@ -1588,6 +1695,7 @@
         serv3_i1:'Produção audiovisual',serv3_i2:'Documentários',serv3_i3:'Streaming & live',
         serv4_i1:'Captação de patrocínios',serv4_i2:'Naming rights',serv4_i3:'Media for equity',
         serv5_i1:'Hospitalidade',serv5_i2:'Eventos proprietários',serv5_i3:'Ativações especiais',
+        nav_hosp:'HOSPITALIDADE',hosp_eyebrow:'EXPERIÊNCIAS VIP',hosp_sec_title:'HOSPITALIDADE',hosp_intro:'Acesso VIP aos maiores eventos do esporte mundial para marcas que querem receber clientes, parceiros e times onde a emoção acontece.',hosp_f1_cat:'AUTOMOBILISMO • INTERLAGOS',hosp_f1_title:'FÓRMULA 1<br>GP DE SÃO PAULO',hosp_f1_desc:'Lounge exclusivo no Grande Prêmio de São Paulo, todo ano em novembro no Autódromo de Interlagos.',hosp_ucl_cat:'FUTEBOL • EUROPA',hosp_ucl_title:'FINAL DA<br>LIGA DOS CAMPEÕES',hosp_ucl_date:'5 de junho de 2027, em Madri.',hosp_ucl_desc:'Ingressos, hospitalidade e camarote exclusivo na decisão do maior torneio de clubes do mundo.',hosp_lib_cat:'FUTEBOL • AMÉRICA DO SUL',hosp_lib_title:'FINAL DA<br>LIBERTADORES',hosp_lib_date:'28 de novembro de 2026, em Montevidéu.',hosp_lib_desc:'Ingressos, hospitalidade e camarote exclusivo na grande final do futebol sul-americano.',hosp_atp_cat:'TÊNIS • CIRCUITO MUNDIAL',hosp_atp_title:'ATP<br>TOUR',hosp_atp_desc:'Miami Open, Roland Garros, Wimbledon e US Open, com acesso aos maiores torneios do circuito.',hosp_note:'* Ingressos categorias 1 e 2. ** Sujeito à disponibilidade.',hosp_cta:'QUERO LEVAR MEUS CONVIDADOS',
         prop_eyebrow:'PORTFÓLIO',prop_title:'PROPRIEDADES',fc_eyebrow:'FALE CONOSCO',
         fc_sub:'Conectamos sua marca às melhores propriedades esportivas e de entretenimento do Brasil e do mundo.',
         form_nome:'Seu nome',form_email:'Seu e-mail',form_empresa:'Empresa',form_msg:'Como podemos ajudar?',form_btn:'ENVIAR MENSAGEM',
@@ -1618,6 +1726,7 @@
         serv3_i1:'Audiovisual production',serv3_i2:'Documentaries',serv3_i3:'Streaming & live',
         serv4_i1:'Sponsorship acquisition',serv4_i2:'Naming rights',serv4_i3:'Media for equity',
         serv5_i1:'Hospitality',serv5_i2:'Proprietary events',serv5_i3:'Special activations',
+        nav_hosp:'HOSPITALITY',hosp_eyebrow:'VIP EXPERIENCES',hosp_sec_title:'HOSPITALITY',hosp_intro:'VIP access to the biggest events in world sport, for brands that want to host clients, partners and teams where the emotion happens.',hosp_f1_cat:'MOTORSPORT • INTERLAGOS',hosp_f1_title:'FORMULA 1<br>SÃO PAULO GP',hosp_f1_desc:'Exclusive lounge at the São Paulo Grand Prix, every November at the Interlagos circuit.',hosp_ucl_cat:'FOOTBALL • EUROPE',hosp_ucl_title:'CHAMPIONS LEAGUE<br>FINAL',hosp_ucl_date:'June 5, 2027, in Madrid.',hosp_ucl_desc:'Tickets, hospitality and an exclusive suite at the final of the biggest club tournament in the world.',hosp_lib_cat:'FOOTBALL • SOUTH AMERICA',hosp_lib_title:'LIBERTADORES<br>FINAL',hosp_lib_date:'November 28, 2026, in Montevideo.',hosp_lib_desc:'Tickets, hospitality and an exclusive suite at the grand final of South American football.',hosp_atp_cat:'TENNIS • WORLD TOUR',hosp_atp_title:'ATP<br>TOUR',hosp_atp_desc:'Miami Open, Roland Garros, Wimbledon and US Open, with access to the biggest tournaments on tour.',hosp_note:'* Category 1 and 2 tickets. ** Subject to availability.',hosp_cta:'BRING MY GUESTS',
         prop_eyebrow:'PORTFOLIO',prop_title:'PROPERTIES',fc_eyebrow:'CONTACT US',
         fc_sub:'We connect your brand to the best sports and entertainment properties in Brazil and around the world.',
         form_nome:'Your name',form_email:'Your e-mail',form_empresa:'Company',form_msg:'How can we help?',form_btn:'SEND MESSAGE',
@@ -1648,6 +1757,7 @@
         serv3_i1:'Producción audiovisual',serv3_i2:'Documentales',serv3_i3:'Streaming & live',
         serv4_i1:'Captación de patrocinios',serv4_i2:'Naming rights',serv4_i3:'Media for equity',
         serv5_i1:'Hospitalidad',serv5_i2:'Eventos propietarios',serv5_i3:'Activaciones especiales',
+        nav_hosp:'HOSPITALIDAD',hosp_eyebrow:'EXPERIENCIAS VIP',hosp_sec_title:'HOSPITALIDAD',hosp_intro:'Acceso VIP a los mayores eventos del deporte mundial para marcas que quieren recibir a clientes, socios y equipos donde ocurre la emoción.',hosp_f1_cat:'AUTOMOVILISMO • INTERLAGOS',hosp_f1_title:'FÓRMULA 1<br>GP DE SÃO PAULO',hosp_f1_desc:'Lounge exclusivo en el Gran Premio de São Paulo, cada noviembre en el Autódromo de Interlagos.',hosp_ucl_cat:'FÚTBOL • EUROPA',hosp_ucl_title:'FINAL DE LA<br>CHAMPIONS LEAGUE',hosp_ucl_date:'5 de junio de 2027, en Madrid.',hosp_ucl_desc:'Entradas, hospitalidad y palco exclusivo en la final del mayor torneo de clubes del mundo.',hosp_lib_cat:'FÚTBOL • SUDAMÉRICA',hosp_lib_title:'FINAL DE LA<br>LIBERTADORES',hosp_lib_date:'28 de noviembre de 2026, en Montevideo.',hosp_lib_desc:'Entradas, hospitalidad y palco exclusivo en la gran final del fútbol sudamericano.',hosp_atp_cat:'TENIS • CIRCUITO MUNDIAL',hosp_atp_title:'ATP<br>TOUR',hosp_atp_desc:'Miami Open, Roland Garros, Wimbledon y US Open, con acceso a los mayores torneos del circuito.',hosp_note:'* Entradas categorías 1 y 2. ** Sujeto a disponibilidad.',hosp_cta:'QUIERO LLEVAR A MIS INVITADOS',
         prop_eyebrow:'PORTAFOLIO',prop_title:'PROPIEDADES',fc_eyebrow:'CONTÁCTENOS',
         fc_sub:'Conectamos tu marca a las mejores propiedades deportivas y de entretenimiento de Brasil y del mundo.',
         form_nome:'Tu nombre',form_email:'Tu correo',form_empresa:'Empresa',form_msg:'¿Cómo podemos ayudar?',form_btn:'ENVIAR MENSAJE',
@@ -1664,9 +1774,18 @@
       }
     };
 
+    // Esconde datas de eventos que já passaram (o card continua: o produto é anual)
+    (function () {
+      var hoje = new Date(); hoje.setHours(0, 0, 0, 0);
+      document.querySelectorAll('[data-ate]').forEach(function (el) {
+        var d = new Date(el.getAttribute('data-ate') + 'T23:59:59');
+        if (d < hoje) el.remove();
+      });
+    })();
+
     function setLang(lang) {
       const t = translations[lang];
-      const htmlKeys = ['serv_card1_title','serv_card2_title','serv_card3_title','serv_card4_title','serv_card5_title'];
+      const htmlKeys = ['serv_card1_title','serv_card2_title','serv_card3_title','serv_card4_title','serv_card5_title','hosp_f1_title','hosp_ucl_title','hosp_lib_title','hosp_atp_title'];
 
       // Textos simples e innerHTML
       document.querySelectorAll('[data-i18n]').forEach(el => {
