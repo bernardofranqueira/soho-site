@@ -644,8 +644,9 @@
     .props-carousel-track {
       display: flex;
       gap: 16px;
-      animation: scrollLeft 40s linear infinite;
+      animation: scrollLeft 60s linear infinite;
       width: max-content;
+      padding-right: 16px; /* fecha o loop sem salto: largura total = N x (card + gap) */
     }
     .props-carousel-track:hover { animation-play-state: paused; }
     .prop-card {
@@ -1446,7 +1447,6 @@
               <div class="prop-pills"><span class="pill">SURF</span><span class="pill">SKATE</span><span class="pill">OFF-ROAD</span></div>
             </div>
           </div>
-
           <div class="prop-card">
             <div class="prop-inner">
               <div class="prop-cat" data-i18n="prop_fut_cat">PATROCÍNIOS • FUTEBOL</div>
@@ -1455,7 +1455,6 @@
               <div class="prop-pills"><span class="pill">CONMEBOL</span><span class="pill">CBF</span><span class="pill">LIBERTADORES</span></div>
             </div>
           </div>
-
           <div class="prop-card">
             <div class="prop-inner">
               <div class="prop-cat" data-i18n="prop_laliga_cat">FUTEBOL ESPANHOL • LICENCIAMENTO</div>
@@ -1465,16 +1464,7 @@
             </div>
           </div>
 
-          <div class="prop-card">
-            <div class="prop-inner">
-              <div class="prop-cat" data-i18n="prop_hosp_cat">COPA DO MUNDO 2026 • EXPERIÊNCIA</div>
-              <div class="prop-name">HOSPITALIDADE</div>
-              <p class="prop-desc" data-i18n="prop_hosp_desc">Pacotes exclusivos para a Copa do Mundo 2026. Ingressos, camarotes, experiências VIP e gestão completa para executivos.</p>
-              <div class="prop-pills"><span class="pill">FIFA 2026</span><span class="pill">VIP</span><span class="pill">MÉXICO • CANADÁ • EUA</span></div>
-            </div>
-          </div>
-
-<!-- duplicado para loop contínuo -->
+<!-- repetido 4x para loop contínuo (animação anda 50% = 2 conjuntos) -->
           <div class="prop-card">
             <div class="prop-inner">
               <div class="prop-cat" data-i18n="prop_esp_cat">CULTURA • IMPOSTO DE RENDA</div>
@@ -1483,7 +1473,6 @@
               <div class="prop-pills"><span class="pill">SURF</span><span class="pill">SKATE</span><span class="pill">OFF-ROAD</span></div>
             </div>
           </div>
-
           <div class="prop-card">
             <div class="prop-inner">
               <div class="prop-cat" data-i18n="prop_fut_cat">PATROCÍNIOS • FUTEBOL</div>
@@ -1492,7 +1481,6 @@
               <div class="prop-pills"><span class="pill">CONMEBOL</span><span class="pill">CBF</span><span class="pill">LIBERTADORES</span></div>
             </div>
           </div>
-
           <div class="prop-card">
             <div class="prop-inner">
               <div class="prop-cat" data-i18n="prop_laliga_cat">FUTEBOL ESPANHOL • LICENCIAMENTO</div>
@@ -1504,14 +1492,53 @@
 
           <div class="prop-card">
             <div class="prop-inner">
-              <div class="prop-cat" data-i18n="prop_hosp_cat">COPA DO MUNDO 2026 • EXPERIÊNCIA</div>
-              <div class="prop-name">HOSPITALIDADE</div>
-              <p class="prop-desc" data-i18n="prop_hosp_desc">Pacotes exclusivos para a Copa do Mundo 2026. Ingressos, camarotes, experiências VIP e gestão completa para executivos.</p>
-              <div class="prop-pills"><span class="pill">FIFA 2026</span><span class="pill">VIP</span><span class="pill">MÉXICO • CANADÁ • EUA</span></div>
+              <div class="prop-cat" data-i18n="prop_esp_cat">CULTURA • IMPOSTO DE RENDA</div>
+              <div class="prop-name">INCENTIVADOS</div>
+              <p class="prop-desc" data-i18n="prop_esp_desc">Parceiros comerciais oficiais dos principais projetos de live marketing e  incentivados do Brasil.</p>
+              <div class="prop-pills"><span class="pill">SURF</span><span class="pill">SKATE</span><span class="pill">OFF-ROAD</span></div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-inner">
+              <div class="prop-cat" data-i18n="prop_fut_cat">PATROCÍNIOS • FUTEBOL</div>
+              <div class="prop-name">FUTEBOL</div>
+              <p class="prop-desc" data-i18n="prop_fut_desc">Clubes, competições e federações. Centralizando estratégia, direito e execução no maior mercado do esporte brasileiro.</p>
+              <div class="prop-pills"><span class="pill">CONMEBOL</span><span class="pill">CBF</span><span class="pill">LIBERTADORES</span></div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-inner">
+              <div class="prop-cat" data-i18n="prop_laliga_cat">FUTEBOL ESPANHOL • LICENCIAMENTO</div>
+              <div class="prop-name">LA LIGA</div>
+              <p class="prop-desc" data-i18n="prop_laliga_desc">Detentores dos direitos de comercialização da marca La Liga no Brasil. Conexão entre marcas brasileiras e o futebol espanhol.</p>
+              <div class="prop-pills"><span class="pill">DIREITOS COMERCIAIS</span><span class="pill">BRASIL</span><span class="pill">FUTEBOL EUROPEU</span></div>
             </div>
           </div>
 
-
+          <div class="prop-card">
+            <div class="prop-inner">
+              <div class="prop-cat" data-i18n="prop_esp_cat">CULTURA • IMPOSTO DE RENDA</div>
+              <div class="prop-name">INCENTIVADOS</div>
+              <p class="prop-desc" data-i18n="prop_esp_desc">Parceiros comerciais oficiais dos principais projetos de live marketing e  incentivados do Brasil.</p>
+              <div class="prop-pills"><span class="pill">SURF</span><span class="pill">SKATE</span><span class="pill">OFF-ROAD</span></div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-inner">
+              <div class="prop-cat" data-i18n="prop_fut_cat">PATROCÍNIOS • FUTEBOL</div>
+              <div class="prop-name">FUTEBOL</div>
+              <p class="prop-desc" data-i18n="prop_fut_desc">Clubes, competições e federações. Centralizando estratégia, direito e execução no maior mercado do esporte brasileiro.</p>
+              <div class="prop-pills"><span class="pill">CONMEBOL</span><span class="pill">CBF</span><span class="pill">LIBERTADORES</span></div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-inner">
+              <div class="prop-cat" data-i18n="prop_laliga_cat">FUTEBOL ESPANHOL • LICENCIAMENTO</div>
+              <div class="prop-name">LA LIGA</div>
+              <p class="prop-desc" data-i18n="prop_laliga_desc">Detentores dos direitos de comercialização da marca La Liga no Brasil. Conexão entre marcas brasileiras e o futebol espanhol.</p>
+              <div class="prop-pills"><span class="pill">DIREITOS COMERCIAIS</span><span class="pill">BRASIL</span><span class="pill">FUTEBOL EUROPEU</span></div>
+            </div>
+          </div>
 
         </div>
       </div>
