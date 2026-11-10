@@ -6,10 +6,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Agência de Marketing Esportivo no Rio | SOHO Sports & Brands</title>
+  <title>Agência de Marketing Esportivo do Brasil | SOHO Sports & Brands</title>
 
   <!-- SEO -->
-  <meta name="description" content="Agência de marketing esportivo no Rio de Janeiro: patrocínios, licenciamento e posicionamento de marcas no esporte, na cultura e no entretenimento." />
+  <meta name="description" content="Agência brasileira de marketing esportivo: patrocínios, licenciamento e posicionamento de marcas no esporte, na cultura e no entretenimento." />
   <link rel="canonical" href="https://sohosportsbrands.com.br/" />
   <meta name="author" content="SOHO Sports & Brands" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
@@ -34,7 +34,7 @@
 
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <link rel="preload" as="image" href="assets/img/hero.webp" type="image/webp" fetchpriority="high" />
+  <link rel="preload" as="image" href="assets/img/hero-ludmilla.webp" type="image/webp" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,900;1,900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -162,70 +162,153 @@
     }
 
     /* ══════════════════════════════
-       HERO — SOBRE
+       HERO — PROPRIEDADES GIRANDO (Ludmilla na capa)
     ══════════════════════════════ */
-    #sobre { position: relative; min-height: 100vh; background: var(--bg); overflow: hidden; }
-
-    .hero-bg {
+    #sobre {
+      position: relative;
+      padding-top: var(--nav-h);
+      background: var(--bg);
+      overflow: hidden;
+    }
+    .hp-stage {
+      position: relative;
+      height: clamp(560px, 41.36vw, calc(100svh - var(--nav-h)));
+      overflow: hidden;
+    }
+    .hp-slide {
       position: absolute;
       inset: 0;
-      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 1s ease, visibility 0s linear 1s;
     }
-    .hero-bg img {
+    .hp-slide.is-active {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 1s ease, visibility 0s;
+      z-index: 1;
+    }
+    .hp-bg, .hp-bg img {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: contain;
-      object-position: bottom right;
     }
-    .hero-bg::after {
+    .hp-bg img {
+      object-fit: cover;
+      object-position: var(--pos, right center);
+      transform: scale(1.06);
+      transition: transform 8s ease-out;
+    }
+    .hp-slide.is-active .hp-bg img { transform: scale(1); }
+    .hp-slide::after {
       content: '';
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to right, var(--bg) 18%, rgba(21,7,21,0.35) 45%, transparent 75%),
-        linear-gradient(to top, var(--bg) 0%, transparent 25%);
+        linear-gradient(to right, var(--bg) 0%, rgba(21,7,21,0.9) 30%, rgba(21,7,21,0.45) 50%, transparent 72%),
+        linear-gradient(to top, rgba(21,7,21,0.85) 0%, transparent 30%);
+      pointer-events: none;
     }
-
-    #sobre .inner {
+    .hp-content {
       position: relative;
       z-index: 2;
+      max-width: 1440px;
+      height: 100%;
+      margin: 0 auto;
+      padding: 84px 55px 182px;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
-      min-height: 100vh;
-      padding-top: calc(var(--nav-h) + 90px);
-      padding-bottom: 80px;
+      justify-content: center;
+      align-items: flex-start;
     }
+    .hp-content > * {
+      max-width: 560px;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .hp-slide.is-active .hp-content > * { opacity: 1; transform: none; }
+    .hp-slide.is-active .hp-content > :nth-child(2) { transition-delay: 0.12s; }
+    .hp-slide.is-active .hp-content > :nth-child(3) { transition-delay: 0.24s; }
+    .hp-slide.is-active .hp-content > :nth-child(4) { transition-delay: 0.36s; }
+    .hp-content .featured-logo { max-width: 300px; max-height: 120px; margin-bottom: 18px; }
+    .hp-content .featured-desc { font-size: 17px; color: var(--white); opacity: 0.88; }
 
+    /* frase-assinatura fixa (H1) */
     .hero-tag {
+      position: absolute;
+      z-index: 3;
+      top: calc(var(--nav-h) + 34px);
+      left: 0; right: 0;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 55px;
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 300;
       font-size: 13px;
       letter-spacing: 3.5px;
-      opacity: 0.65;
-      margin-bottom: 22px;
+      color: var(--accent);
+      opacity: 0.75;
+      pointer-events: none;
     }
 
-    .hero-title {
+    /* barra inferior: abas com progresso + botões */
+    .hp-bar {
+      position: absolute;
+      z-index: 3;
+      left: 0; right: 0; bottom: 0;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 55px 36px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 30px;
+      pointer-events: none;
+    }
+    .hp-bar > * { pointer-events: auto; }
+    .hp-tabs { display: flex; gap: 18px; flex-wrap: wrap; }
+    .hp-tab {
+      background: none;
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      width: 128px;
+      text-align: left;
       font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 900;
-      font-style: italic;
-      font-size: clamp(56px, 6vw, 82px);
-      line-height: 0.92;
-      margin-bottom: 36px;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      opacity: 0.5;
+      transition: opacity 0.3s;
     }
-    .hero-title .w { color: var(--white); }
-    .hero-title .b { color: var(--accent); }
-
-    .hero-sub {
-      font-size: 17px;
-      line-height: 1.7;
-      opacity: 0.8;
-      max-width: 500px;
-      margin-bottom: 48px;
+    .hp-tab:hover, .hp-tab:focus-visible, .hp-tab.is-active { opacity: 1; }
+    .hp-tab:focus-visible { outline: 1px solid var(--accent); outline-offset: 6px; }
+    .hp-track {
+      display: block;
+      height: 2px;
+      background: rgba(214, 201, 169, 0.25);
+      margin-bottom: 10px;
+      overflow: hidden;
     }
+    .hp-fill {
+      display: block;
+      height: 100%;
+      width: 100%;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left center;
+    }
+    .hp-tab.is-active .hp-fill { animation: hpFill var(--hp-dur, 6.5s) linear forwards; }
+    .hp-tab.is-done .hp-fill { transform: scaleX(1); }
+    #sobre.is-paused .hp-tab.is-active .hp-fill { animation-play-state: paused; }
+    @keyframes hpFill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+    .hp-btns { display: flex; gap: 14px; flex-shrink: 0; order: -1; }
+    .hp-btns .btn-fill, .hp-btns .btn-out { padding: 15px 30px; }
+    .btn-out { background: rgba(21,7,21,0.35); }
 
     .hero-btns { display: flex; gap: 18px; }
 
@@ -1036,16 +1119,29 @@
     }
     nav ul.mobile-open li:last-child { border-bottom: none; }
 
-    /* ── HERO SOBRE ── */
-    #sobre .inner {
-      padding-top: calc(var(--nav-h) + 30px);
-      padding-bottom: 60px;
+    /* ── HERO (propriedades) ── */
+    .hp-stage { height: min(620px, calc(100svh - var(--nav-h) - 150px)); min-height: 500px; }
+    .hp-bg img { object-position: var(--mpos, 70% center); }
+    .hp-slide::after {
+      background: linear-gradient(to top, var(--bg) 0%, rgba(21,7,21,0.9) 36%, rgba(21,7,21,0.3) 62%, transparent 80%),
+                  linear-gradient(to bottom, rgba(21,7,21,0.6) 0%, transparent 18%);
     }
-    .hero-title { font-size: clamp(52px, 12vw, 80px); }
-    .hero-sub { font-size: 15px; max-width: 100%; }
-    .hero-btns { flex-direction: column; gap: 12px; }
+    .hp-content { padding: 60px 24px 26px; justify-content: flex-end; }
+    .hp-content > * { max-width: 100%; }
+    .hp-content .featured-logo { max-width: 190px; max-height: 72px; margin-bottom: 12px; }
+    .hp-content .featured-desc { font-size: 14px; margin-bottom: 14px; }
+    .hero-tag { top: calc(var(--nav-h) + 18px); padding: 0 24px; font-size: 11px; letter-spacing: 2.5px; }
+    .hp-bar {
+      position: static;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 22px;
+      padding: 18px 24px 36px;
+    }
+    .hp-tabs { gap: 10px; flex-wrap: nowrap; }
+    .hp-tab { width: auto; flex: 1; font-size: 11px; letter-spacing: 0.5px; }
+    .hp-btns { flex-direction: column; gap: 12px; order: 0; }
     .btn-fill, .btn-out { text-align: center; padding: 16px 32px; }
-    .hero-bg img { object-position: 70% bottom; }
 
     /* ── QUEM SOMOS ── */
     #quem-somos .inner {
@@ -1160,7 +1256,7 @@
     .service-card { padding: 22px 20px; gap: 18px; flex-direction: row; align-items: center; justify-content: flex-start; }
     .card-icon { width: 80px; height: 80px; margin-bottom: 0; flex-shrink: 0; }
     .card-icon img { width: 80px; height: 80px; }
-    .hero-title { font-size: 48px; }
+    .hp-tab { font-size: 10px; }
     .luva-card { height: 240px; }
     .luva-name { font-size: 28px; }
     .prop-card { width: 260px; }
@@ -1204,6 +1300,8 @@
     .nav-logo, .footer-logo { width: auto; }
     @media (prefers-reduced-motion: reduce) {
       .fade-in { opacity: 1; transform: none; transition: none; }
+      .hp-bg img, .hp-slide.is-active .hp-bg img { transform: none; transition: none; }
+      .hp-content > * { transform: none; }
     }
   </style>
   <script type="application/ld+json">
@@ -1220,15 +1318,13 @@
           "https://www.instagram.com/sohosportsbrands/",
           "https://www.linkedin.com/company/soho-sports-brands/"
         ],
-        "description": "Agência de marketing esportivo no Rio de Janeiro: patrocínios, licenciamento e posicionamento de marcas no esporte, na cultura e no entretenimento.",
+        "description": "Agência brasileira de marketing esportivo: patrocínios, licenciamento e posicionamento de marcas no esporte, na cultura e no entretenimento.",
         "founder": {
           "@type": "Person",
           "name": "Fernando Paz"
         },
         "address": {
           "@type": "PostalAddress",
-          "addressLocality": "Rio de Janeiro",
-          "addressRegion": "RJ",
           "addressCountry": "BR"
         },
         "areaServed": "BR",
@@ -1291,21 +1387,95 @@
 
 
 
-  <!-- ══ SOBRE / HERO ══ -->
-  <section id="sobre">
-    <div class="hero-bg">
-      <img src="assets/img/hero.webp" width="1440" height="856" alt="" fetchpriority="high" />
+  <!-- ══ SOBRE / HERO — propriedades girando (Ludmilla na capa) ══ -->
+  <section id="sobre" aria-roledescription="carrossel" aria-label="Propriedades SOHO">
+    <h1 class="hero-tag" data-i18n="hero_tag">AGÊNCIA DE MARKETING ESPORTIVO • BRASIL</h1>
+
+    <div class="hp-stage" id="hp-stage">
+
+      <!-- 1. LUDMILLA (capa) -->
+      <article class="hp-slide is-active" aria-roledescription="slide" aria-label="Ludmilla">
+        <picture class="hp-bg">
+          <img src="assets/img/hero-ludmilla.webp" width="1330" height="550" alt="Ludmilla" fetchpriority="high" style="--pos:right center; --mpos:66% center;" />
+        </picture>
+        <div class="hp-content">
+          <div class="featured-cat" data-i18n="feat_lud_cat">TALENTOS • MÚSICA</div>
+          <img class="featured-logo" src="assets/img/prop-ludmilla-logo.png" width="400" height="223" alt="Ludmilla" />
+          <p class="featured-desc" data-i18n="feat_lud_desc">Gestão comercial e licenciamento de uma das maiores vozes da música brasileira. Conexão autêntica entre marcas e o universo pop, o funk e a cultura popular nacional.</p>
+          <div class="featured-pills">
+            <span class="featured-pill">EMBAIXADORA</span>
+            <span class="featured-pill">CAMPANHAS</span>
+            <span class="featured-pill">MEDIA FOR EQUITY</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2. LUVA DE PEDREIRO -->
+      <article class="hp-slide" aria-roledescription="slide" aria-label="Luva de Pedreiro">
+        <picture class="hp-bg">
+          <source media="(max-width: 768px)" srcset="assets/img/hero-luva-m.webp" width="960" height="540" />
+          <img src="assets/img/hero-luva.webp" width="1920" height="794" alt="Luva de Pedreiro" loading="lazy" decoding="async" style="--pos:right center; --mpos:74% center;" />
+        </picture>
+        <div class="hp-content">
+          <div class="featured-cat" data-i18n="luva_cat">CONTEÚDO • AUDIÊNCIA • PERFORMANCE</div>
+          <img class="featured-logo" src="assets/img/prop-luva-logo.png" width="800" height="183" alt="Luva de Pedreiro" loading="lazy" />
+          <p class="featured-desc" data-i18n="luva_desc">O maior creator de futebol do Brasil.</p>
+          <div class="featured-pills">
+            <span class="featured-pill">ALCANCE MASSIVO</span>
+            <span class="featured-pill">ENGAJAMENTO REAL</span>
+            <span class="featured-pill">COMUNIDADE GLOBAL</span>
+            <span class="featured-pill">FUTEBOL E CULTURA</span>
+            <span class="featured-pill">MÚSICA E LIFESTYLE</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. UNICEF -->
+      <article class="hp-slide" aria-roledescription="slide" aria-label="UNICEF">
+        <picture class="hp-bg">
+          <img src="assets/img/hero-unicef.webp" width="1330" height="550" alt="Campanha UNICEF em mídia OOH" loading="lazy" decoding="async" style="--pos:right center; --mpos:68% center;" />
+        </picture>
+        <div class="hp-content">
+          <div class="featured-cat" data-i18n="feat_unicef_cat">CONSULTORIA • IMPACTO SOCIAL</div>
+          <img class="featured-logo" src="assets/img/prop-unicef-logo.png" width="400" height="100" alt="UNICEF" loading="lazy" />
+          <p class="featured-desc" data-i18n="feat_unicef_desc">Parceria estratégica com a UNICEF na campanha "Violência não cola", com Jorginho e Danilo na luta contra a violência infantil.</p>
+          <div class="featured-pills">
+            <span class="featured-pill">PROPÓSITO REAL</span>
+            <span class="featured-pill">ALCANCE NACIONAL</span>
+            <span class="featured-pill">MÍDIA OOH</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4. CBSQUASH -->
+      <article class="hp-slide" aria-roledescription="slide" aria-label="CBSquash">
+        <picture class="hp-bg">
+          <img src="assets/img/hero-cbsquash.webp" width="1330" height="550" alt="Quadra de squash com o Cristo Redentor ao fundo" loading="lazy" decoding="async" style="--pos:right center; --mpos:64% center;" />
+        </picture>
+        <div class="hp-content">
+          <div class="featured-cat" data-i18n="feat_cbsq_cat">OLIMPÍADAS • PATROCÍNIO</div>
+          <img class="featured-logo" src="assets/img/prop-cbsquash-logo.png" width="400" height="133" alt="CBSquash" loading="lazy" />
+          <p class="featured-desc" data-i18n="feat_cbsq_desc">Agência oficial da Confederação Brasileira de Squash, esporte que estreia nos Jogos Olímpicos de Los Angeles 2028.</p>
+          <div class="featured-pills">
+            <span class="featured-pill">ALTO PADRÃO</span>
+            <span class="featured-pill">RELACIONAMENTO</span>
+            <span class="featured-pill">VISIBILIDADE DE MARCA</span>
+          </div>
+        </div>
+      </article>
+
     </div>
-    <div class="inner">
-      <p class="hero-tag" data-i18n="hero_tag">SPORTS MARKETING • RIO DE JANEIRO • BRASIL</p>
-      <h1 class="hero-title fade-in" id="hero-title">
-        <span class="w">ONDE</span> <span class="b">ESPORTE</span><br>
-        <span class="w">VIRA NEGÓCIO.</span>
-      </h1>
-      <p class="hero-sub fade-in" data-i18n="hero_sub">Gestão de patrocínios, licenciamento e brand positioning nos maiores palcos do esporte e da cultura brasileira.</p>
-      <div class="hero-btns">
-        <a href="#propriedades" class="btn-fill"><span data-i18n="btn_portfolio">VER PORTFÓLIO</span></a>
-        <a href="#fale-conosco" class="btn-out"><span data-i18n="btn_falar">FALAR COM A SOHO</span></a>
+
+    <div class="hp-bar">
+      <div class="hp-tabs" role="tablist" aria-label="Propriedades">
+        <button class="hp-tab is-active" type="button" role="tab" aria-selected="true"><span class="hp-track"><span class="hp-fill"></span></span>LUDMILLA</button>
+        <button class="hp-tab" type="button" role="tab" aria-selected="false"><span class="hp-track"><span class="hp-fill"></span></span>LUVA DE PEDREIRO</button>
+        <button class="hp-tab" type="button" role="tab" aria-selected="false"><span class="hp-track"><span class="hp-fill"></span></span>UNICEF</button>
+        <button class="hp-tab" type="button" role="tab" aria-selected="false"><span class="hp-track"><span class="hp-fill"></span></span>CBSQUASH</button>
+      </div>
+      <div class="hp-btns">
+        <a href="#propriedades" class="btn-out"><span data-i18n="btn_portfolio">VER PORTFÓLIO</span></a>
+        <a href="#fale-conosco" class="btn-fill"><span data-i18n="btn_falar">FALAR COM A SOHO</span></a>
       </div>
     </div>
   </section>
@@ -1444,50 +1614,6 @@
     <div class="inner">
       <p class="eyebrow" data-i18n="prop_eyebrow">PORTFÓLIO</p>
       <h2 class="sec-title fade-in">PROPRIEDADES</h2>
-
-      <!-- CARDS EM DESTAQUE -->
-      <div class="featured-stack fade-in">
-
-        <div class="featured-card" style="background-image:url('assets/img/prop-ludmilla-bg.jpg');">
-          <div class="featured-content">
-            <div class="featured-cat" data-i18n="feat_lud_cat">TALENTOS • MÚSICA</div>
-            <img class="featured-logo" src="assets/img/prop-ludmilla-logo.png" width="400" height="223" alt="Ludmilla" loading="lazy" />
-            <p class="featured-desc" data-i18n="feat_lud_desc">Gestão comercial e licenciamento de uma das maiores vozes da música brasileira. Conexão autêntica entre marcas e o universo pop, o funk e a cultura popular nacional.</p>
-            <div class="featured-pills">
-              <span class="featured-pill">EMBAIXADORA</span>
-              <span class="featured-pill">CAMPANHAS</span>
-              <span class="featured-pill">MEDIA FOR EQUITY</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="featured-card align-right" style="background-image:url('assets/img/prop-unicef-bg.jpg');">
-          <div class="featured-content">
-            <div class="featured-cat" data-i18n="feat_unicef_cat">CONSULTORIA • IMPACTO SOCIAL</div>
-            <img class="featured-logo" src="assets/img/prop-unicef-logo.png" width="400" height="100" alt="UNICEF" loading="lazy" />
-            <p class="featured-desc" data-i18n="feat_unicef_desc">Parceria estratégica com a UNICEF na campanha "Violência não cola", com Jorginho e Danilo na luta contra a violência infantil.</p>
-            <div class="featured-pills">
-              <span class="featured-pill">PROPÓSITO REAL</span>
-              <span class="featured-pill">ALCANCE NACIONAL</span>
-              <span class="featured-pill">MÍDIA OOH</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="featured-card" style="background-image:url('assets/img/prop-cbsquash-bg.jpg');">
-          <div class="featured-content">
-            <div class="featured-cat" data-i18n="feat_cbsq_cat">OLIMPÍADAS • PATROCÍNIO</div>
-            <img class="featured-logo" src="assets/img/prop-cbsquash-logo.png" width="400" height="133" alt="CBSquash" loading="lazy" />
-            <p class="featured-desc" data-i18n="feat_cbsq_desc">Agência oficial da Confederação Brasileira de Squash, esporte que estreia nos Jogos Olímpicos de Los Angeles 2028.</p>
-            <div class="featured-pills">
-              <span class="featured-pill">ALTO PADRÃO</span>
-              <span class="featured-pill">RELACIONAMENTO</span>
-              <span class="featured-pill">VISIBILIDADE DE MARCA</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
 
       <!-- CARROSSEL das outras propriedades -->
       <div class="props-carousel-wrap">
@@ -1690,11 +1816,67 @@
     }, { threshold: 0.12 });
     document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
 
+    // ══ HERO — propriedades girando ══
+    (function () {
+      var hero = document.getElementById('sobre');
+      if (!hero) return;
+      var slides = hero.querySelectorAll('.hp-slide');
+      var tabs = hero.querySelectorAll('.hp-tab');
+      var cur = 0;
+
+      function go(i) {
+        i = (i + slides.length) % slides.length;
+        slides[cur].classList.remove('is-active');
+        slides[cur].setAttribute('aria-hidden', 'true');
+        tabs.forEach(function (t, k) {
+          t.classList.remove('is-active');
+          t.classList.toggle('is-done', k < i);
+          t.setAttribute('aria-selected', 'false');
+        });
+        cur = i;
+        slides[cur].classList.add('is-active');
+        slides[cur].removeAttribute('aria-hidden');
+        var tab = tabs[cur];
+        void tab.offsetWidth; // reinicia a barra de progresso
+        tab.classList.add('is-active');
+        tab.setAttribute('aria-selected', 'true');
+      }
+
+      slides.forEach(function (s, k) { if (k) s.setAttribute('aria-hidden', 'true'); });
+
+      // a barra de progresso é o relógio: terminou, passa para a próxima
+      tabs.forEach(function (t, k) {
+        t.querySelector('.hp-fill').addEventListener('animationend', function () {
+          if (k === cur) go(cur + 1);
+        });
+        t.addEventListener('click', function () { if (k !== cur) go(k); });
+      });
+
+      // pausa com o mouse em cima e quando a aba do navegador não está visível
+      var stage = document.getElementById('hp-stage');
+      function pause(on) { hero.classList.toggle('is-paused', on); }
+      stage.addEventListener('mouseenter', function () { pause(true); });
+      stage.addEventListener('mouseleave', function () { pause(false); });
+      hero.addEventListener('focusin', function () { pause(true); });
+      hero.addEventListener('focusout', function () { pause(false); });
+      document.addEventListener('visibilitychange', function () { pause(document.hidden); });
+
+      // arrastar para os lados no celular
+      var x0 = null;
+      stage.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+      stage.addEventListener('touchend', function (e) {
+        if (x0 === null) return;
+        var dx = e.changedTouches[0].clientX - x0;
+        if (Math.abs(dx) > 45) go(cur + (dx < 0 ? 1 : -1));
+        x0 = null;
+      });
+    })();
+
     // ══ TRADUÇÃO i18n ══
     const translations = {
       pt: {
         nav_sobre:'SOBRE',nav_quem:'QUEM SOMOS',nav_servicos:'SERVIÇOS',nav_prop:'PROPRIEDADES',nav_fale:'FALE CONOSCO',
-        hero_tag:'SPORTS MARKETING • RIO DE JANEIRO • BRASIL',
+        hero_tag:'AGÊNCIA DE MARKETING ESPORTIVO • BRASIL',
         hero_title:'<span class="w">ONDE</span> <span class="b">ESPORTE</span><br><span class="w">VIRA NEGÓCIO.</span>',
         hero_sub:'Gestão de patrocínios, licenciamento e brand positioning nos maiores palcos do esporte e da cultura brasileira.',
         btn_portfolio:'VER PORTFÓLIO',btn_falar:'FALAR COM A SOHO',
@@ -1712,7 +1894,7 @@
         prop_eyebrow:'PORTFÓLIO',prop_title:'PROPRIEDADES',fc_eyebrow:'FALE CONOSCO',
         fc_sub:'Conectamos sua marca às melhores propriedades esportivas e de entretenimento do Brasil e do mundo.',
         form_nome:'Seu nome',form_email:'Seu e-mail',form_empresa:'Empresa',form_msg:'Como podemos ajudar?',form_btn:'ENVIAR MENSAGEM',
-        luva_cat:'TALENTOS',luva_desc:'Gestão comercial e licenciamento do maior fenômeno do futebol nas redes sociais. Conexão autêntica entre marcas e a cultura popular brasileira.',
+        luva_cat:'CONTEÚDO • AUDIÊNCIA • PERFORMANCE',luva_desc:'O maior creator de futebol do Brasil.',
         feat_lud_cat:'TALENTOS • MÚSICA',feat_lud_desc:'Gestão comercial e licenciamento de uma das maiores vozes da música brasileira. Conexão autêntica entre marcas e o universo pop, o funk e a cultura popular nacional.',
         feat_unicef_cat:'CONSULTORIA • IMPACTO SOCIAL',feat_unicef_desc:'Parceria estratégica com a UNICEF na campanha "Violência não cola", com Jorginho e Danilo na luta contra a violência infantil.',
         feat_cbsq_cat:'OLIMPÍADAS • PATROCÍNIO',feat_cbsq_desc:'Agência oficial da Confederação Brasileira de Squash, esporte que estreia nos Jogos Olímpicos de Los Angeles 2028.',
@@ -1725,7 +1907,7 @@
       },
       en: {
         nav_sobre:'ABOUT',nav_quem:'WHO WE ARE',nav_servicos:'SERVICES',nav_prop:'PROPERTIES',nav_fale:'CONTACT US',
-        hero_tag:'SPORTS MARKETING • RIO DE JANEIRO • BRAZIL',
+        hero_tag:'SPORTS MARKETING AGENCY • BRAZIL',
         hero_title:'<span class="w">WHERE SPORT</span><br><span class="w">MEETS BUSINESS.</span>',
         hero_sub:'Sponsorship management, licensing and brand positioning on the biggest stages of sports and Brazilian culture.',
         btn_portfolio:'VIEW PORTFOLIO',btn_falar:'TALK TO SOHO',
@@ -1743,7 +1925,7 @@
         prop_eyebrow:'PORTFOLIO',prop_title:'PROPERTIES',fc_eyebrow:'CONTACT US',
         fc_sub:'We connect your brand to the best sports and entertainment properties in Brazil and around the world.',
         form_nome:'Your name',form_email:'Your e-mail',form_empresa:'Company',form_msg:'How can we help?',form_btn:'SEND MESSAGE',
-        luva_cat:'TALENTS',luva_desc:'Commercial management and licensing of the biggest football phenomenon on social media. Authentic connection between brands and Brazilian popular culture.',
+        luva_cat:'CONTENT • AUDIENCE • PERFORMANCE',luva_desc:"Brazil's biggest football creator.",
         feat_lud_cat:'TALENT • MUSIC',feat_lud_desc:"Commercial management and licensing for one of Brazil's biggest music voices. An authentic connection between brands and the world of pop, funk and Brazilian pop culture.",
         feat_unicef_cat:'ADVISORY • SOCIAL IMPACT',feat_unicef_desc:"Strategic partnership with UNICEF on the \"Violence Doesn't Stick\" campaign, featuring Jorginho and Danilo in the fight against child violence.",
         feat_cbsq_cat:'OLYMPICS • SPONSORSHIP',feat_cbsq_desc:"Official agency of the Brazilian Squash Confederation, a sport debuting at the Los Angeles 2028 Olympic Games.",
@@ -1756,7 +1938,7 @@
       },
       es: {
         nav_sobre:'SOBRE',nav_quem:'QUIÉNES SOMOS',nav_servicos:'SERVICIOS',nav_prop:'PROPIEDADES',nav_fale:'CONTÁCTENOS',
-        hero_tag:'SPORTS MARKETING • RIO DE JANEIRO • BRASIL',
+        hero_tag:'AGENCIA DE MARKETING DEPORTIVO • BRASIL',
         hero_title:'<span class="w">DONDE EL DEPORTE</span><br><span class="w">SE CONVIERTE EN NEGOCIO.</span>',
         hero_sub:'Gestión de patrocinios, licenciamiento y posicionamiento de marcas en los mayores escenarios del deporte y la cultura brasileña.',
         btn_portfolio:'VER PORTAFOLIO',btn_falar:'HABLAR CON SOHO',
@@ -1774,7 +1956,7 @@
         prop_eyebrow:'PORTAFOLIO',prop_title:'PROPIEDADES',fc_eyebrow:'CONTÁCTENOS',
         fc_sub:'Conectamos tu marca a las mejores propiedades deportivas y de entretenimiento de Brasil y del mundo.',
         form_nome:'Tu nombre',form_email:'Tu correo',form_empresa:'Empresa',form_msg:'¿Cómo podemos ayudar?',form_btn:'ENVIAR MENSAJE',
-        luva_cat:'TALENTOS',luva_desc:'Gestión comercial y licenciamiento del mayor fenómeno del fútbol en redes sociales. Conexión auténtica entre marcas y la cultura popular brasileña.',
+        luva_cat:'CONTENIDO • AUDIENCIA • PERFORMANCE',luva_desc:'El mayor creador de contenido de fútbol de Brasil.',
         feat_lud_cat:'TALENTO • MÚSICA',feat_lud_desc:'Gestión comercial y licenciamiento de una de las mayores voces de la música brasileña. Conexión auténtica entre marcas y el universo pop, el funk y la cultura popular nacional.',
         feat_unicef_cat:'CONSULTORÍA • IMPACTO SOCIAL',feat_unicef_desc:'Asociación estratégica con UNICEF en la campaña "La violencia no pega", con Jorginho y Danilo en la lucha contra la violencia infantil.',
         feat_cbsq_cat:'OLIMPIADAS • PATROCINIO',feat_cbsq_desc:'Agencia oficial de la Confederación Brasileña de Squash, deporte que debuta en los Juegos Olímpicos de Los Ángeles 2028.',
