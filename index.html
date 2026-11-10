@@ -268,13 +268,13 @@
       pointer-events: none;
     }
     .hp-bar > * { pointer-events: auto; }
-    .hp-tabs { display: flex; gap: 18px; flex-wrap: wrap; }
+    .hp-tabs { display: flex; gap: 16px; flex-wrap: wrap; }
     .hp-tab {
       background: none;
       border: 0;
       padding: 0;
       cursor: pointer;
-      width: 128px;
+      width: 118px;
       text-align: left;
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 600;
@@ -302,7 +302,7 @@
       transform: scaleX(0);
       transform-origin: left center;
     }
-    .hp-tab.is-active .hp-fill { animation: hpFill var(--hp-dur, 6.5s) linear forwards; }
+    .hp-tab.is-active .hp-fill { animation: hpFill var(--hp-dur, 5s) linear forwards; }
     .hp-tab.is-done .hp-fill { transform: scaleX(1); }
     #sobre.is-paused .hp-tab.is-active .hp-fill { animation-play-state: paused; }
     @keyframes hpFill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
@@ -1139,7 +1139,9 @@
       padding: 18px 24px 36px;
     }
     .hp-tabs { gap: 10px; flex-wrap: nowrap; }
-    .hp-tab { width: auto; flex: 1; font-size: 11px; letter-spacing: 0.5px; }
+    .hp-tab { width: auto; flex: 1; font-size: 11px; letter-spacing: 0.5px; padding: 8px 0; }
+    .hp-label { display: none; }
+    .hp-track { margin-bottom: 0; height: 3px; }
     .hp-btns { flex-direction: column; gap: 12px; order: 0; }
     .btn-fill, .btn-out { text-align: center; padding: 16px 32px; }
 
@@ -1256,7 +1258,6 @@
     .service-card { padding: 22px 20px; gap: 18px; flex-direction: row; align-items: center; justify-content: flex-start; }
     .card-icon { width: 80px; height: 80px; margin-bottom: 0; flex-shrink: 0; }
     .card-icon img { width: 80px; height: 80px; }
-    .hp-tab { font-size: 10px; }
     .luva-card { height: 240px; }
     .luva-name { font-size: 28px; }
     .prop-card { width: 260px; }
@@ -1413,8 +1414,8 @@
       <!-- 2. LUVA DE PEDREIRO -->
       <article class="hp-slide" aria-roledescription="slide" aria-label="Luva de Pedreiro">
         <picture class="hp-bg">
-          <source media="(max-width: 768px)" srcset="assets/img/hero-luva-m.webp" width="960" height="540" />
-          <img src="assets/img/hero-luva.webp" width="1920" height="794" alt="Luva de Pedreiro" loading="lazy" decoding="async" style="--pos:right center; --mpos:74% center;" />
+          <source media="(max-width: 768px)" srcset="assets/img/hero-luva-m.webp" width="960" height="536" />
+          <img src="assets/img/hero-luva.webp" width="1920" height="1072" alt="Luva de Pedreiro" loading="lazy" decoding="async" style="--pos:right top; --mpos:76% top;" />
         </picture>
         <div class="hp-content">
           <div class="featured-cat" data-i18n="luva_cat">CONTEÚDO • AUDIÊNCIA • PERFORMANCE</div>
@@ -1430,7 +1431,47 @@
         </div>
       </article>
 
-      <!-- 3. UNICEF -->
+      <!-- 3. NOTIFUT -->
+      <article class="hp-slide" aria-roledescription="slide" aria-label="NOTIFUT">
+        <picture class="hp-bg">
+          <source media="(max-width: 768px)" srcset="assets/img/hero-notifut-m.webp" width="960" height="540" />
+          <img src="assets/img/hero-notifut.webp" width="1920" height="794" alt="Pelúcia e jogo de tabuleiro NOTIFUT" loading="lazy" decoding="async" style="--pos:right center; --mpos:80% center;" />
+        </picture>
+        <div class="hp-content">
+          <div class="featured-cat" data-i18n="notif_cat">INFANTIL • DIVERSÃO • EDUCAÇÃO</div>
+          <img class="featured-logo" src="assets/img/prop-notifut-logo.png" width="400" height="486" alt="NOTIFUT" loading="lazy" />
+          <p class="featured-desc" data-i18n="notif_desc">A plataforma oficial infantil da CONMEBOL Libertadores: 72M de visualizações, 28 episódios e 2 temporadas, em português e espanhol.</p>
+          <div class="featured-pills">
+            <span class="featured-pill">STREAMING</span>
+            <span class="featured-pill">LICENSING</span>
+            <span class="featured-pill">MASCOTES</span>
+            <span class="featured-pill">RETAIL</span>
+            <span class="featured-pill">DIGITAL</span>
+            <span class="featured-pill">EXPERIÊNCIAS</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4. LALIGA -->
+      <article class="hp-slide" aria-roledescription="slide" aria-label="LaLiga">
+        <picture class="hp-bg">
+          <source media="(max-width: 768px)" srcset="assets/img/hero-laliga-m.webp" width="1152" height="600" />
+          <img src="assets/img/hero-laliga.webp" width="1920" height="800" alt="Etiqueta de produto oficial LaLiga" loading="lazy" decoding="async" style="--pos:right center; --mpos:25% center;" />
+        </picture>
+        <div class="hp-content">
+          <div class="featured-cat" data-i18n="prop_laliga_cat">FUTEBOL ESPANHOL • LICENCIAMENTO</div>
+          <img class="featured-logo" src="assets/img/prop-laliga-logo.png" width="755" height="749" alt="LaLiga" loading="lazy" />
+          <p class="featured-desc" data-i18n="hero_laliga_desc">Somos o elo entre a liga mais assistida no mundo e o mercado brasileiro.</p>
+          <div class="featured-pills">
+            <span class="featured-pill">ATIVAÇÕES</span>
+            <span class="featured-pill">EXPERIÊNCIAS</span>
+            <span class="featured-pill">LICENCIAMENTO</span>
+            <span class="featured-pill">PATROCÍNIO</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5. UNICEF -->
       <article class="hp-slide" aria-roledescription="slide" aria-label="UNICEF">
         <picture class="hp-bg">
           <img src="assets/img/hero-unicef.webp" width="1330" height="550" alt="Campanha UNICEF em mídia OOH" loading="lazy" decoding="async" style="--pos:right center; --mpos:68% center;" />
@@ -1447,7 +1488,7 @@
         </div>
       </article>
 
-      <!-- 4. CBSQUASH -->
+      <!-- 6. CBSQUASH -->
       <article class="hp-slide" aria-roledescription="slide" aria-label="CBSquash">
         <picture class="hp-bg">
           <img src="assets/img/hero-cbsquash.webp" width="1330" height="550" alt="Quadra de squash com o Cristo Redentor ao fundo" loading="lazy" decoding="async" style="--pos:right center; --mpos:64% center;" />
@@ -1468,10 +1509,12 @@
 
     <div class="hp-bar">
       <div class="hp-tabs" role="tablist" aria-label="Propriedades">
-        <button class="hp-tab is-active" type="button" role="tab" aria-selected="true"><span class="hp-track"><span class="hp-fill"></span></span>LUDMILLA</button>
-        <button class="hp-tab" type="button" role="tab" aria-selected="false"><span class="hp-track"><span class="hp-fill"></span></span>LUVA DE PEDREIRO</button>
-        <button class="hp-tab" type="button" role="tab" aria-selected="false"><span class="hp-track"><span class="hp-fill"></span></span>UNICEF</button>
-        <button class="hp-tab" type="button" role="tab" aria-selected="false"><span class="hp-track"><span class="hp-fill"></span></span>CBSQUASH</button>
+        <button class="hp-tab is-active" type="button" role="tab" aria-selected="true" style="--hp-dur:5s"><span class="hp-track"><span class="hp-fill"></span></span><span class="hp-label">LUDMILLA</span></button>
+        <button class="hp-tab" type="button" role="tab" aria-selected="false" style="--hp-dur:5s"><span class="hp-track"><span class="hp-fill"></span></span><span class="hp-label">LUVA DE PEDREIRO</span></button>
+        <button class="hp-tab" type="button" role="tab" aria-selected="false" style="--hp-dur:3.5s"><span class="hp-track"><span class="hp-fill"></span></span><span class="hp-label">NOTIFUT</span></button>
+        <button class="hp-tab" type="button" role="tab" aria-selected="false" style="--hp-dur:3.5s"><span class="hp-track"><span class="hp-fill"></span></span><span class="hp-label">LALIGA</span></button>
+        <button class="hp-tab" type="button" role="tab" aria-selected="false" style="--hp-dur:3.5s"><span class="hp-track"><span class="hp-fill"></span></span><span class="hp-label">UNICEF</span></button>
+        <button class="hp-tab" type="button" role="tab" aria-selected="false" style="--hp-dur:3.5s"><span class="hp-track"><span class="hp-fill"></span></span><span class="hp-label">CBSQUASH</span></button>
       </div>
       <div class="hp-btns">
         <a href="#propriedades" class="btn-out"><span data-i18n="btn_portfolio">VER PORTFÓLIO</span></a>
@@ -1894,6 +1937,7 @@
         prop_eyebrow:'PORTFÓLIO',prop_title:'PROPRIEDADES',fc_eyebrow:'FALE CONOSCO',
         fc_sub:'Conectamos sua marca às melhores propriedades esportivas e de entretenimento do Brasil e do mundo.',
         form_nome:'Seu nome',form_email:'Seu e-mail',form_empresa:'Empresa',form_msg:'Como podemos ajudar?',form_btn:'ENVIAR MENSAGEM',
+        notif_cat:'INFANTIL • DIVERSÃO • EDUCAÇÃO',notif_desc:'A plataforma oficial infantil da CONMEBOL Libertadores: 72M de visualizações, 28 episódios e 2 temporadas, em português e espanhol.',hero_laliga_desc:'Somos o elo entre a liga mais assistida no mundo e o mercado brasileiro.',
         luva_cat:'CONTEÚDO • AUDIÊNCIA • PERFORMANCE',luva_desc:'O maior creator de futebol do Brasil.',
         feat_lud_cat:'TALENTOS • MÚSICA',feat_lud_desc:'Gestão comercial e licenciamento de uma das maiores vozes da música brasileira. Conexão autêntica entre marcas e o universo pop, o funk e a cultura popular nacional.',
         feat_unicef_cat:'CONSULTORIA • IMPACTO SOCIAL',feat_unicef_desc:'Parceria estratégica com a UNICEF na campanha "Violência não cola", com Jorginho e Danilo na luta contra a violência infantil.',
@@ -1925,6 +1969,7 @@
         prop_eyebrow:'PORTFOLIO',prop_title:'PROPERTIES',fc_eyebrow:'CONTACT US',
         fc_sub:'We connect your brand to the best sports and entertainment properties in Brazil and around the world.',
         form_nome:'Your name',form_email:'Your e-mail',form_empresa:'Company',form_msg:'How can we help?',form_btn:'SEND MESSAGE',
+        notif_cat:'KIDS • FUN • EDUCATION',notif_desc:"CONMEBOL Libertadores' official kids platform: 72M views, 28 episodes and 2 seasons, in Portuguese and Spanish.",hero_laliga_desc:'We are the link between the most-watched league in the world and the Brazilian market.',
         luva_cat:'CONTENT • AUDIENCE • PERFORMANCE',luva_desc:"Brazil's biggest football creator.",
         feat_lud_cat:'TALENT • MUSIC',feat_lud_desc:"Commercial management and licensing for one of Brazil's biggest music voices. An authentic connection between brands and the world of pop, funk and Brazilian pop culture.",
         feat_unicef_cat:'ADVISORY • SOCIAL IMPACT',feat_unicef_desc:"Strategic partnership with UNICEF on the \"Violence Doesn't Stick\" campaign, featuring Jorginho and Danilo in the fight against child violence.",
@@ -1956,6 +2001,7 @@
         prop_eyebrow:'PORTAFOLIO',prop_title:'PROPIEDADES',fc_eyebrow:'CONTÁCTENOS',
         fc_sub:'Conectamos tu marca a las mejores propiedades deportivas y de entretenimiento de Brasil y del mundo.',
         form_nome:'Tu nombre',form_email:'Tu correo',form_empresa:'Empresa',form_msg:'¿Cómo podemos ayudar?',form_btn:'ENVIAR MENSAJE',
+        notif_cat:'INFANTIL • DIVERSIÓN • EDUCACIÓN',notif_desc:'La plataforma infantil oficial de la CONMEBOL Libertadores: 72M de visualizaciones, 28 episodios y 2 temporadas, en portugués y español.',hero_laliga_desc:'Somos el puente entre la liga más vista del mundo y el mercado brasileño.',
         luva_cat:'CONTENIDO • AUDIENCIA • PERFORMANCE',luva_desc:'El mayor creador de contenido de fútbol de Brasil.',
         feat_lud_cat:'TALENTO • MÚSICA',feat_lud_desc:'Gestión comercial y licenciamiento de una de las mayores voces de la música brasileña. Conexión auténtica entre marcas y el universo pop, el funk y la cultura popular nacional.',
         feat_unicef_cat:'CONSULTORÍA • IMPACTO SOCIAL',feat_unicef_desc:'Asociación estratégica con UNICEF en la campaña "La violencia no pega", con Jorginho y Danilo en la lucha contra la violencia infantil.',
