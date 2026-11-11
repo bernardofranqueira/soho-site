@@ -1001,22 +1001,22 @@
     .logo-cell {
       border: 1px solid var(--border);
       border-radius: 10px;
-      height: 90px;
+      aspect-ratio: 2 / 1;
+      container-type: inline-size;
       display: flex;
       align-items: center;
       justify-content: center;
       opacity: 0.7;
       transition: opacity 0.25s, border-color 0.25s;
-      padding: 14px;
       overflow: hidden;
     }
     .logo-cell:hover { opacity: 1; border-color: rgba(214,201,169,0.5); }
+    /* equilíbrio óptico: --k = largura em % da célula, calculada pra
+       todos os logos terem o mesmo peso visual (área + densidade) */
     .logo-cell img {
-      max-width: 85%;
-      max-height: 48px;
-      object-fit: contain;
+      width: calc(var(--k) * 1cqw);
+      height: auto;
     }
-    .logo-cell img.tall { max-height: 62px; }
 
     /* ══════════════════════════════
        FALE CONOSCO
@@ -1142,7 +1142,6 @@
 
     /* CONEXÕES */
     .logos-grid { gap: 10px; }
-    .logo-cell { height: 76px; padding: 10px; }
 
     /* FALE CONOSCO */
     #fale-conosco .inner { grid-template-columns: 1fr; gap: 40px; }
@@ -1184,9 +1183,6 @@
 
     /* CONEXÕES */
     .logos-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    .logo-cell { height: 64px; padding: 8px; }
-    .logo-cell img { max-height: 34px; }
-    .logo-cell img.tall { max-height: 46px; }
 
     /* ── NAV MOBILE ── */
     nav {
@@ -1852,27 +1848,27 @@
       <h2 class="sec-title fade-in" data-i18n="cx_title">CONEXÕES</h2>
       <p class="sec-lead" data-i18n="cx_lead">+15 ANOS CONSTRUINDO RELACIONAMENTOS NO BRASIL E NO MUNDO.</p>
       <div class="logos-grid fade-in">
-        <div class="logo-cell"><img src="assets/img/cx-record.webp" width="296" height="120" alt="Record" loading="lazy" decoding="async" /></div>
-        <div class="logo-cell"><img src="assets/img/cx-cbf.webp" width="106" height="150" class="tall" alt="CBF" loading="lazy" decoding="async" /></div>
-        <div class="logo-cell"><img src="assets/img/cx-conmebol.webp" width="360" height="98" alt="CONMEBOL" loading="lazy" decoding="async" /></div>
-        <div class="logo-cell"><img src="assets/img/cx-flamengo.webp" width="128" height="120" alt="Flamengo" loading="lazy" decoding="async" /></div>
-        <div class="logo-cell"><img src="assets/img/cx-unicef.webp" width="360" height="93" alt="UNICEF" loading="lazy" decoding="async" /></div>
-        <div class="logo-cell"><img src="assets/img/cx-globo.webp" width="116" height="120" alt="Globo" loading="lazy" decoding="async" /></div>
-        <div class="logo-cell"><img src="assets/img/cx-fifa.webp" width="293" height="103" alt="FIFA" loading="lazy" decoding="async" /></div>
-        <div class="logo-cell"><img src="assets/img/cx-livemode.webp" width="235" height="120" alt="LiveMode" loading="lazy" decoding="async" /></div>
-        <div class="logo-cell"><img src="assets/img/cx-dentsu.webp" width="278" height="64" alt="dentsu" loading="lazy" decoding="async" /></div>
-        <div class="logo-cell"><img src="assets/img/cx-sbt.webp" width="121" height="120" alt="SBT" loading="lazy" decoding="async" /></div>
-        <div class="logo-cell"><img src="assets/img/cx-laliga.webp" width="360" height="94" alt="LALIGA" loading="lazy" decoding="async" /></div>
-        <div class="logo-cell"><img src="assets/img/cx-tgi-sport.webp" width="283" height="120" alt="TGI Sport" loading="lazy" decoding="async" /></div>
-        <div class="logo-cell"><img src="assets/img/cx-afa.webp" width="119" height="150" class="tall" alt="AFA" loading="lazy" decoding="async" /></div>
-        <div class="logo-cell"><img src="assets/img/cx-beyond.webp" width="331" height="75" alt="Beyond Films" loading="lazy" decoding="async" /></div>
-        <div class="logo-cell"><img src="assets/img/cx-sportfive.webp" width="174" height="112" alt="SPORTFIVE" loading="lazy" decoding="async" /></div>
-        <div class="logo-cell"><img src="assets/img/cx-cob.webp" width="344" height="122" alt="Comitê Olímpico do Brasil" loading="lazy" decoding="async" /></div>
-        <div class="logo-cell"><img src="assets/img/cx-dreamfactory.webp" width="295" height="108" alt="Dream Factory" loading="lazy" decoding="async" /></div>
-        <div class="logo-cell"><img src="assets/img/cx-cbsquash.webp" width="316" height="104" alt="CBSquash" loading="lazy" decoding="async" /></div>
-        <div class="logo-cell"><img src="assets/img/cx-xsports.webp" width="360" height="64" alt="X Sports" loading="lazy" decoding="async" /></div>
-        <div class="logo-cell"><img src="assets/img/cx-puma.webp" width="237" height="120" alt="PUMA" loading="lazy" decoding="async" /></div>
-        <div class="logo-cell"><img src="assets/img/cx-investimage.webp" width="360" height="70" alt="Investimage" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-record.webp" width="296" height="120" style="--k:57.8" alt="Record" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-cbf.webp" width="106" height="150" style="--k:27" alt="CBF" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-conmebol.webp" width="360" height="98" style="--k:65.4" alt="CONMEBOL" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-flamengo.webp" width="128" height="120" style="--k:33.3" alt="Flamengo" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-unicef.webp" width="360" height="93" style="--k:65.9" alt="UNICEF" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-globo.webp" width="116" height="120" style="--k:29.3" alt="Globo" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-fifa.webp" width="293" height="103" style="--k:49.1" alt="FIFA" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-livemode.webp" width="235" height="120" style="--k:47.4" alt="LiveMode" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-dentsu.webp" width="278" height="64" style="--k:66.4" alt="dentsu" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-sbt.webp" width="121" height="120" style="--k:29.4" alt="SBT" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-laliga.webp" width="360" height="94" style="--k:65.9" alt="LALIGA" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-tgi-sport.webp" width="283" height="120" style="--k:57.4" alt="TGI Sport" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-afa.webp" width="119" height="150" style="--k:29.5" alt="AFA" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-beyond.webp" width="331" height="75" style="--k:69.9" alt="Beyond Films" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-sportfive.webp" width="174" height="112" style="--k:41" alt="SPORTFIVE" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-cob.webp" width="344" height="122" style="--k:62.4" alt="Comitê Olímpico do Brasil" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-dreamfactory.webp" width="295" height="108" style="--k:57" alt="Dream Factory" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-cbsquash.webp" width="316" height="104" style="--k:62.4" alt="CBSquash" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-xsports.webp" width="360" height="64" style="--k:70.3" alt="X Sports" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-puma.webp" width="237" height="120" style="--k:46.5" alt="PUMA" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-investimage.webp" width="360" height="70" style="--k:73.3" alt="Investimage" loading="lazy" decoding="async" /></div>
       </div>
     </div>
   </section>
