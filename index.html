@@ -522,11 +522,13 @@
     }
     .oss-lines {
       position: relative;
-      height: 110px;
+      height: 140px;
       margin-top: 34px;
     }
-    .oss-lines svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-    .oss-lines line { stroke: var(--accent); stroke-opacity: 0.55; stroke-width: 2; }
+    /* linhas desenhadas em px pelo JS (bolinhas → bordas do logo) */
+    .oss-diagram { position: relative; }
+    .oss-rays { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+    .oss-rays line { stroke: var(--accent); stroke-opacity: 0.55; stroke-width: 2; }
     .oss-lines i {
       position: absolute;
       top: -4px;
@@ -1169,7 +1171,7 @@
     .oss-node h3 { font-size: 17px; margin-bottom: 2px; align-self: end; }
     .oss-node p { max-width: none; margin: 0; align-self: start; }
     .oss-lines { height: 44px; margin-top: 26px; }
-    .oss-lines svg, .oss-lines i { display: none; }
+    .oss-rays, .oss-lines i { display: none; }
     .oss-lines::before {
       content: '';
       position: absolute;
@@ -1708,6 +1710,7 @@
       <p class="sec-lead" data-i18n="oss_lead">UMA MARCA FALA COM:</p>
 
       <div class="oss-diagram fade-in">
+        <svg class="oss-rays" aria-hidden="true"><line /><line /><line /><line /><line /></svg>
         <ul class="oss-nodes">
         <li class="oss-node">
           <div class="oss-ico" style="--s:1.0"><img src="assets/img/oss-agencia.svg" width="250" height="264" alt="" loading="lazy" decoding="async" /></div>
@@ -1736,7 +1739,6 @@
         </li>
         </ul>
         <div class="oss-lines" aria-hidden="true">
-          <svg viewBox="0 0 1000 110" preserveAspectRatio="none"><line x1="100" y1="0" x2="400" y2="110" vector-effect="non-scaling-stroke" /><line x1="300" y1="0" x2="445" y2="70" vector-effect="non-scaling-stroke" /><line x1="500" y1="0" x2="500" y2="45" vector-effect="non-scaling-stroke" /><line x1="700" y1="0" x2="555" y2="70" vector-effect="non-scaling-stroke" /><line x1="900" y1="0" x2="600" y2="110" vector-effect="non-scaling-stroke" /></svg>
           <i style="left:10%"></i><i style="left:30%"></i><i style="left:50%"></i><i style="left:70%"></i><i style="left:90%"></i>
         </div>
         <div class="oss-hub">
@@ -2090,6 +2092,33 @@
       });
     }, { threshold: 0.12 });
     document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+    // ══ ONE STOP SHOP — linhas: das bolinhas até o logo (pontas: meio das laterais e topo) ══
+    (function () {
+      var d = document.querySelector('.oss-diagram');
+      if (!d) return;
+      var svg = d.querySelector('.oss-rays'), lines = svg.querySelectorAll('line');
+      var dots = d.querySelectorAll('.oss-lines i'), logo = d.querySelector('.oss-hub img');
+      function draw() {
+        if (getComputedStyle(svg).display === 'none') return;
+        var r = d.getBoundingClientRect(), g = logo.getBoundingClientRect();
+        svg.setAttribute('viewBox', '0 0 ' + r.width + ' ' + r.height);
+        var cx = g.left + g.width / 2 - r.left, top = g.top - r.top, mid = top + g.height / 2;
+        var hw = g.width / 2, gap = 40;
+        var ends = [[cx - hw - gap, mid], [cx - hw * 0.55, top - gap], [cx, top - gap], [cx + hw * 0.55, top - gap], [cx + hw + gap, mid]];
+        dots.forEach(function (dot, i) {
+          var b = dot.getBoundingClientRect();
+          lines[i].setAttribute('x1', b.left + b.width / 2 - r.left);
+          lines[i].setAttribute('y1', b.top + b.height / 2 - r.top);
+          lines[i].setAttribute('x2', ends[i][0]);
+          lines[i].setAttribute('y2', ends[i][1]);
+        });
+      }
+      draw();
+      window.addEventListener('resize', draw);
+      logo.addEventListener('load', draw);
+      if (document.fonts) document.fonts.ready.then(draw);
+    })();
 
     // ══ HERO — propriedades girando ══
     (function () {
