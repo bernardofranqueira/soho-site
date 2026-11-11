@@ -472,6 +472,81 @@
       line-height: 1.5;
     }
 
+    /* ── ONE STOP SHOP: diagrama "o mercado está fragmentado" ── */
+    #one-stop-shop { background: var(--bg); }
+    .sec-lead {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      letter-spacing: 1.5px;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin: -30px 0 56px;
+    }
+    .oss-nodes {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+    /* ícones na mesma escala do institucional (--s = altura relativa) */
+    .oss-ico {
+      --h: 84px;
+      height: var(--h);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 26px;
+    }
+    .oss-ico img { display: block; height: calc(var(--h) * var(--s, 1)); width: auto; }
+    .oss-node h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 19px;
+      letter-spacing: 1px;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .oss-node p {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--white);
+      opacity: 0.75;
+      max-width: 220px;
+      margin: 0 auto;
+      text-wrap: balance;
+    }
+    .oss-lines {
+      position: relative;
+      height: 110px;
+      margin-top: 34px;
+    }
+    .oss-lines svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+    .oss-lines line { stroke: var(--accent); stroke-opacity: 0.55; stroke-width: 2; }
+    .oss-lines i {
+      position: absolute;
+      top: -4px;
+      width: 9px; height: 9px;
+      margin-left: -4.5px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    .oss-hub { text-align: center; margin-top: 14px; }
+    .oss-hub img { display: block; height: 96px; width: auto; margin: 0 auto 18px; }
+    .oss-hub p {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-style: italic;
+      font-size: 34px;
+      letter-spacing: 1px;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+
     /* ══════════════════════════════
        SERVIÇOS
     ══════════════════════════════ */
@@ -915,13 +990,13 @@
     /* ══════════════════════════════
        CONEXÕES
     ══════════════════════════════ */
-    #conexoes { background: var(--bg2); }
     #conexoes .sec-title { color: var(--white); }
 
+    #conexoes { background: var(--bg); }
     .logos-grid {
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 16px;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 14px;
     }
     .logo-cell {
       border: 1px solid var(--border);
@@ -930,7 +1005,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      opacity: 0.55;
+      opacity: 0.7;
       transition: opacity 0.25s, border-color 0.25s;
       padding: 14px;
       overflow: hidden;
@@ -940,9 +1015,8 @@
       max-width: 85%;
       max-height: 48px;
       object-fit: contain;
-      filter: none;
-      mix-blend-mode: screen;
     }
+    .logo-cell img.tall { max-height: 62px; }
 
     /* ══════════════════════════════
        FALE CONOSCO
@@ -1060,6 +1134,16 @@
     /* SERVIÇOS */
     .cards-row { grid-template-columns: repeat(3, 1fr); gap: 12px; }
 
+    /* ONE STOP SHOP diagrama */
+    .oss-nodes { gap: 14px; }
+    .oss-ico { --h: 64px; margin-bottom: 18px; }
+    .oss-node h3 { font-size: 16px; }
+    .oss-node p { font-size: 13.5px; }
+
+    /* CONEXÕES */
+    .logos-grid { gap: 10px; }
+    .logo-cell { height: 76px; padding: 10px; }
+
     /* FALE CONOSCO */
     #fale-conosco .inner { grid-template-columns: 1fr; gap: 40px; }
 
@@ -1072,6 +1156,37 @@
     :root { --nav-h: 70px; }
 
     .inner { padding: 70px 24px 60px; }
+
+    /* ONE STOP SHOP diagrama: lista vertical */
+    .sec-lead { font-size: 17px; margin: -14px 0 32px; }
+    .oss-nodes { grid-template-columns: 1fr; gap: 22px; text-align: left; }
+    .oss-node {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      column-gap: 18px;
+      align-items: center;
+    }
+    .oss-ico { --h: 50px; grid-row: span 2; margin: 0; }
+    .oss-node h3 { font-size: 17px; margin-bottom: 2px; align-self: end; }
+    .oss-node p { max-width: none; margin: 0; align-self: start; }
+    .oss-lines { height: 44px; margin-top: 26px; }
+    .oss-lines svg, .oss-lines i { display: none; }
+    .oss-lines::before {
+      content: '';
+      position: absolute;
+      left: 50%; top: 0; bottom: 0;
+      width: 2px; margin-left: -1px;
+      background: var(--accent);
+      opacity: 0.55;
+    }
+    .oss-hub img { height: 70px; margin-bottom: 12px; }
+    .oss-hub p { font-size: 26px; }
+
+    /* CONEXÕES */
+    .logos-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .logo-cell { height: 64px; padding: 8px; }
+    .logo-cell img { max-height: 34px; }
+    .logo-cell img.tall { max-height: 46px; }
 
     /* ── NAV MOBILE ── */
     nav {
@@ -1588,6 +1703,54 @@
   </section>
 
 
+  <!-- ══ ONE STOP SHOP — o mercado está fragmentado ══ -->
+  <section id="one-stop-shop">
+    <div class="inner">
+      <p class="eyebrow" data-i18n="oss_eyebrow">ONE STOP SHOP</p>
+      <h2 class="sec-title fade-in"><span data-i18n="oss_title_1">O MERCADO ESTÁ</span><br><span style="color:var(--accent)" data-i18n="oss_title_2">FRAGMENTADO.</span></h2>
+      <p class="sec-lead" data-i18n="oss_lead">UMA MARCA FALA COM:</p>
+
+      <div class="oss-diagram fade-in">
+        <ul class="oss-nodes">
+        <li class="oss-node">
+          <div class="oss-ico" style="--s:1.0"><img src="assets/img/oss-agencia.svg" width="250" height="264" alt="" loading="lazy" decoding="async" /></div>
+          <h3 data-i18n="oss_n1_t">AGÊNCIA</h3>
+          <p data-i18n="oss_n1_d">Comunicação, campanhas e ativações</p>
+        </li>
+        <li class="oss-node">
+          <div class="oss-ico" style="--s:0.82"><img src="assets/img/oss-talentos.svg" width="217" height="217" alt="" loading="lazy" decoding="async" /></div>
+          <h3 data-i18n="oss_n2_t">GESTÃO DE TALENTOS</h3>
+          <p data-i18n="oss_n2_d">Representação e gestão de carreiras</p>
+        </li>
+        <li class="oss-node">
+          <div class="oss-ico" style="--s:0.92"><img src="assets/img/oss-consultoria.svg" width="174" height="243" alt="" loading="lazy" decoding="async" /></div>
+          <h3 data-i18n="oss_n3_t">CONSULTORIA</h3>
+          <p data-i18n="oss_n3_d">Estratégia, estruturação e valuation dos direitos</p>
+        </li>
+        <li class="oss-node">
+          <div class="oss-ico" style="--s:0.61"><img src="assets/img/oss-hospitalidade.svg" width="218" height="162" alt="" loading="lazy" decoding="async" /></div>
+          <h3 data-i18n="oss_n4_t">HOSPITALIDADE</h3>
+          <p data-i18n="oss_n4_d">Ingressos, camarotes e experiências</p>
+        </li>
+        <li class="oss-node">
+          <div class="oss-ico" style="--s:0.72"><img src="assets/img/oss-direitos.svg" width="192" height="192" alt="" loading="lazy" decoding="async" /></div>
+          <h3 data-i18n="oss_n5_t">DETENTORES DE DIREITO</h3>
+          <p data-i18n="oss_n5_d">Ligas, clubes, federações e propriedades</p>
+        </li>
+        </ul>
+        <div class="oss-lines" aria-hidden="true">
+          <svg viewBox="0 0 1000 110" preserveAspectRatio="none"><line x1="100" y1="0" x2="400" y2="110" vector-effect="non-scaling-stroke" /><line x1="300" y1="0" x2="445" y2="70" vector-effect="non-scaling-stroke" /><line x1="500" y1="0" x2="500" y2="45" vector-effect="non-scaling-stroke" /><line x1="700" y1="0" x2="555" y2="70" vector-effect="non-scaling-stroke" /><line x1="900" y1="0" x2="600" y2="110" vector-effect="non-scaling-stroke" /></svg>
+          <i style="left:10%"></i><i style="left:30%"></i><i style="left:50%"></i><i style="left:70%"></i><i style="left:90%"></i>
+        </div>
+        <div class="oss-hub">
+          <img src="assets/img/logo-soho-areia.svg" width="314" height="121" alt="SOHO Sports &amp; Brands" loading="lazy" decoding="async" />
+          <p data-i18n="oss_hub">CONECTA TUDO</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
   <!-- ══ SERVIÇOS ══ -->
   <section id="servicos">
     <div class="inner">
@@ -1599,7 +1762,7 @@
         <!-- Strategy & Consulting -->
         <div class="service-card">
           <div class="card-icon">
-            <img src="assets/img/icon-strategy.webp" width="184" height="260" alt="" loading="lazy" decoding="async" />
+            <img src="assets/img/icon-strategy.svg" width="184" height="260" alt="" loading="lazy" decoding="async" />
           </div>
           <div class="card-content">
             <h3 class="card-title" data-i18n="serv_card1_title">STRATEGY<br>& CONSULTING</h3>
@@ -1614,7 +1777,7 @@
         <!-- Rights & Assets -->
         <div class="service-card">
           <div class="card-icon">
-            <img src="assets/img/icon-rights.webp" width="184" height="260" alt="" loading="lazy" decoding="async" />
+            <img src="assets/img/icon-rights.svg" width="184" height="260" alt="" loading="lazy" decoding="async" />
           </div>
           <div class="card-content">
             <h3 class="card-title" data-i18n="serv_card2_title">RIGHTS<br>& ASSETS</h3>
@@ -1629,7 +1792,7 @@
         <!-- Content & Mídia -->
         <div class="service-card">
           <div class="card-icon">
-            <img src="assets/img/icon-content.webp" width="184" height="260" alt="" loading="lazy" decoding="async" />
+            <img src="assets/img/icon-content.svg" width="184" height="260" alt="" loading="lazy" decoding="async" />
           </div>
           <div class="card-content">
             <h3 class="card-title" data-i18n="serv_card3_title">CONTENT<br>& MÍDIA</h3>
@@ -1644,7 +1807,7 @@
         <!-- Sponsorship & Commercial -->
         <div class="service-card">
           <div class="card-icon">
-            <img src="assets/img/icon-sponsorship.webp" width="184" height="260" alt="" loading="lazy" decoding="async" />
+            <img src="assets/img/icon-sponsorship.svg" width="184" height="260" alt="" loading="lazy" decoding="async" />
           </div>
           <div class="card-content">
             <h3 class="card-title" data-i18n="serv_card4_title">SPONSORSHIP<br>& COMMERCIAL</h3>
@@ -1659,7 +1822,7 @@
         <!-- Experiences & Live -->
         <div class="service-card">
           <div class="card-icon">
-            <img src="assets/img/icon-experiences.webp" width="184" height="260" alt="" loading="lazy" decoding="async" />
+            <img src="assets/img/icon-experiences.svg" width="184" height="260" alt="" loading="lazy" decoding="async" />
           </div>
           <div class="card-content">
             <h3 class="card-title" data-i18n="serv_card5_title">EXPERIENCES<br>& LIVE</h3>
@@ -1681,6 +1844,38 @@
 
 
 
+
+
+  <!-- ══ CONEXÕES ══ -->
+  <section id="conexoes">
+    <div class="inner">
+      <h2 class="sec-title fade-in" data-i18n="cx_title">CONEXÕES</h2>
+      <p class="sec-lead" data-i18n="cx_lead">+15 ANOS CONSTRUINDO RELACIONAMENTOS NO BRASIL E NO MUNDO.</p>
+      <div class="logos-grid fade-in">
+        <div class="logo-cell"><img src="assets/img/cx-record.webp" width="296" height="120" alt="Record" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-cbf.webp" width="106" height="150" class="tall" alt="CBF" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-conmebol.webp" width="360" height="98" alt="CONMEBOL" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-flamengo.webp" width="128" height="120" alt="Flamengo" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-unicef.webp" width="360" height="93" alt="UNICEF" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-globo.webp" width="116" height="120" alt="Globo" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-fifa.webp" width="293" height="103" alt="FIFA" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-livemode.webp" width="235" height="120" alt="LiveMode" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-dentsu.webp" width="278" height="64" alt="dentsu" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-sbt.webp" width="121" height="120" alt="SBT" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-laliga.webp" width="360" height="94" alt="LALIGA" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-tgi-sport.webp" width="283" height="120" alt="TGI Sport" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-afa.webp" width="119" height="150" class="tall" alt="AFA" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-beyond.webp" width="331" height="75" alt="Beyond Films" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-sportfive.webp" width="174" height="112" alt="SPORTFIVE" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-cob.webp" width="344" height="122" alt="Comitê Olímpico do Brasil" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-dreamfactory.webp" width="295" height="108" alt="Dream Factory" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-cbsquash.webp" width="316" height="104" alt="CBSquash" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-xsports.webp" width="360" height="64" alt="X Sports" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-puma.webp" width="237" height="120" alt="PUMA" loading="lazy" decoding="async" /></div>
+        <div class="logo-cell"><img src="assets/img/cx-investimage.webp" width="360" height="70" alt="Investimage" loading="lazy" decoding="async" /></div>
+      </div>
+    </div>
+  </section>
 
 
   <!-- ══ PROPRIEDADES ══ -->
@@ -1958,6 +2153,14 @@
     // ══ TRADUÇÃO i18n ══
     const translations = {
       pt: {
+        oss_eyebrow:'ONE STOP SHOP',oss_title_1:'O MERCADO ESTÁ',oss_title_2:'FRAGMENTADO.',oss_lead:'UMA MARCA FALA COM:',
+        oss_n1_t:'AGÊNCIA',oss_n1_d:'Comunicação, campanhas e ativações',
+        oss_n2_t:'GESTÃO DE TALENTOS',oss_n2_d:'Representação e gestão de carreiras',
+        oss_n3_t:'CONSULTORIA',oss_n3_d:'Estratégia, estruturação e valuation dos direitos',
+        oss_n4_t:'HOSPITALIDADE',oss_n4_d:'Ingressos, camarotes e experiências',
+        oss_n5_t:'DETENTORES DE DIREITO',oss_n5_d:'Ligas, clubes, federações e propriedades',
+        oss_hub:'CONECTA TUDO',
+        cx_title:'CONEXÕES',cx_lead:'+15 ANOS CONSTRUINDO RELACIONAMENTOS NO BRASIL E NO MUNDO.',
         nav_sobre:'SOBRE',nav_quem:'QUEM SOMOS',nav_servicos:'SERVIÇOS',nav_prop:'PROPRIEDADES',nav_fale:'FALE CONOSCO',
         hero_tag:'AGÊNCIA DE MARKETING ESPORTIVO • BRASIL',
         hero_title:'<span class="w">ONDE</span> <span class="b">ESPORTE</span><br><span class="w">VIRA NEGÓCIO.</span>',
@@ -1991,6 +2194,14 @@
         prop_hosp_cat:'COPA DO MUNDO 2026 • EXPERIÊNCIA',prop_hosp_desc:'Pacotes exclusivos para a Copa do Mundo 2026. Ingressos, camarotes, experiências VIP e gestão completa para executivos.',
       },
       en: {
+        oss_eyebrow:'ONE STOP SHOP',oss_title_1:'THE MARKET IS',oss_title_2:'FRAGMENTED.',oss_lead:'A BRAND DEALS WITH:',
+        oss_n1_t:'AGENCY',oss_n1_d:'Communication, campaigns and activations',
+        oss_n2_t:'TALENT MANAGEMENT',oss_n2_d:'Representation and career management',
+        oss_n3_t:'CONSULTING',oss_n3_d:'Strategy, structuring and rights valuation',
+        oss_n4_t:'HOSPITALITY',oss_n4_d:'Tickets, suites and experiences',
+        oss_n5_t:'RIGHTS HOLDERS',oss_n5_d:'Leagues, clubs, federations and properties',
+        oss_hub:'CONNECTS IT ALL',
+        cx_title:'CONNECTIONS',cx_lead:'15+ YEARS BUILDING RELATIONSHIPS IN BRAZIL AND AROUND THE WORLD.',
         nav_sobre:'ABOUT',nav_quem:'WHO WE ARE',nav_servicos:'SERVICES',nav_prop:'PROPERTIES',nav_fale:'CONTACT US',
         hero_tag:'SPORTS MARKETING AGENCY • BRAZIL',
         hero_title:'<span class="w">WHERE SPORT</span><br><span class="w">MEETS BUSINESS.</span>',
@@ -2024,6 +2235,14 @@
         prop_hosp_cat:'FIFA WORLD CUP 2026 • EXPERIENCE',prop_hosp_desc:'Exclusive packages for the 2026 World Cup. Tickets, suites, VIP experiences and full management for brands and executives.',
       },
       es: {
+        oss_eyebrow:'ONE STOP SHOP',oss_title_1:'EL MERCADO ESTÁ',oss_title_2:'FRAGMENTADO.',oss_lead:'UNA MARCA HABLA CON:',
+        oss_n1_t:'AGENCIA',oss_n1_d:'Comunicación, campañas y activaciones',
+        oss_n2_t:'GESTIÓN DE TALENTOS',oss_n2_d:'Representación y gestión de carreras',
+        oss_n3_t:'CONSULTORÍA',oss_n3_d:'Estrategia, estructuración y valuación de derechos',
+        oss_n4_t:'HOSPITALIDAD',oss_n4_d:'Entradas, palcos y experiencias',
+        oss_n5_t:'TITULARES DE DERECHOS',oss_n5_d:'Ligas, clubes, federaciones y propiedades',
+        oss_hub:'LO CONECTA TODO',
+        cx_title:'CONEXIONES',cx_lead:'+15 AÑOS CONSTRUYENDO RELACIONES EN BRASIL Y EN EL MUNDO.',
         nav_sobre:'SOBRE',nav_quem:'QUIÉNES SOMOS',nav_servicos:'SERVICIOS',nav_prop:'PROPIEDADES',nav_fale:'CONTÁCTENOS',
         hero_tag:'AGENCIA DE MARKETING DEPORTIVO • BRASIL',
         hero_title:'<span class="w">DONDE EL DEPORTE</span><br><span class="w">SE CONVIERTE EN NEGOCIO.</span>',
